@@ -6,10 +6,6 @@ const jwt = require('jsonwebtoken');
 const auth = require("../auth");
 const SECRET = 'nicolas';
 const path = require('path');
-
-// Configuração da conexão com o banco de dados
-
-
 // Endpoint de login
 router.post('/get-login', async function(req, res) {
     const {email, password} = req.body;
