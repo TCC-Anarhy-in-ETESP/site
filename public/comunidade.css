@@ -1,59 +1,94 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 .post{
+    width: 60vw;
     padding: 0.5vw;
     background-color: #40659c;
     box-shadow: 0px 0px 2vw ;
 
     display: flex;
+    flex-direction: column;
     
     
 }
 
 .user-tag{
     display: flex;
-    padding: 3vw;
-    border-bottom: 1px black solid;
-
-
+    padding: 1vw;
 }
 
-.content{
+
+
+.content, .content-comment{
     display: flex;
     flex-direction: column;
-    padding-left: 1vw;
+    padding-left: 2.5vw;
+    margin: 2.5vw;
+    margin-top:0px;
+    border-left: 5px solid rgb(0, 10, 99);
 }
 
-.content .user-name, .content p{
-    height: 3vw;
+.content-img, .comment-img{
+    border-radius: 25px;
+    width: 50vw;
+}
+
+ .mesage{
     display: flex;
     align-items: center;
     font-family: "Roboto", sans-serif;
-    font-weight: 300;
+    font-weight: 500;
     font-style: normal;
-    font-size: 1.5vw;
-    font-weight: bold;
+    font-size: 2.5vh;
 }
 
-.content p{
-    font-weight: 300;
-}
-
-.content img{
-    width: 30vw;
-}
 
 .user-img{
     border-radius: 100px;
-    width: 3vw;
-    height: 3vw;
+    height: 4vw;
+    width: 4vw;
+   
+}
+
+.user-name{
+    margin: 0;
+    display: flex;
+    align-items: center;
+    margin-left: 1vw;
+    font-family: "Roboto", sans-serif;
+    font-weight: 600;
+    font-style: bold;
+    font-size: 3vh;
 }
 
 #mgas{
     width: 90vw;
-    padding-left: 20vw;
-    padding-right: 20vw;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.comments{
+    display: flex;
+    flex-direction: column;
+}
+
+.content-comment{
+    border: 0px;
+}
+
+.comment-img{
+    width: 40vw;
+}
+
+.likes{
+    display: flex;
+}
+
+.likes-heart{
+    background-image: url("./img/empty-heart.png");
+    height: 30px;
+    width: 30px;
+    border: 0px;
 }
 
 

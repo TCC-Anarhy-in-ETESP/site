@@ -46,8 +46,7 @@ router.get("/get-posts-with-comments", async (req, res) => {
 
         var datas = []; 
 
-        const length = res_posts.length;
-        for(i = 0; i < length; i++){
+        for(i = 0; i < res_posts.length; i++){
             const {p_id_post} = res_posts[i];
             const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
            

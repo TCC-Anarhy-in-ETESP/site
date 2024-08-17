@@ -7,9 +7,7 @@ module.exports = (req, res, next)=>{
     const token = req.cookies.token;
 
     if (!token) {
-        return res.status(401).json({
-            errors: 'No token provided'
-        });
+        return res.status(401).redirect("/login")
     }
 
     jwt.verify(token, SECRET, (err, decoded) => {
