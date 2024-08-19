@@ -42,7 +42,43 @@ router.post("/post-comment", auth, async (req, res) => {
 
 router.get("/get-posts-with-comments", async (req, res) => {
     try{
+        
         const res_posts = await db.query("select * from getposts()");
+
+        var datas = []; 
+
+        for(i = 0; i < res_posts.length; i++){
+            const {p_id_post} = res_posts[i];
+            const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
+           
+            const data = {
+                post_comments : {
+                    post: await res_posts[i],
+                    comments: await res_comments
+                }
+            }
+
+            datas.push(data)
+        }
+        
+        res.status(200).json({
+            mensagem: "Todos os posts pegos com sucesso.",
+            resultados: datas
+        });
+        
+    }catch(err){
+        res.status(404).json({
+            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+            erros: err
+        });    
+    }
+});
+
+router.get("/get-posts-with-comments-loged", auth, async (req, res) => {
+    try{
+        const id = req.userid;
+        console.log(id);
+        const res_posts = await db.query("select * from getpostslog($1)", [id]);
 
         var datas = []; 
 

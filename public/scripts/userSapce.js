@@ -21,8 +21,8 @@ async function verifyCookie(){
         return await resposta.json(); 
 
     } catch (err) {
-        console.log("token negado: ", err);
-        return null; // Retorna null em caso de erro
+        
+        return -1; // Retorna null em caso de erro
     }
     
 }

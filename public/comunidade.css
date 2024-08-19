@@ -85,10 +85,19 @@
 }
 
 .likes-heart{
-    background-image: url("./img/empty-heart.png");
-    height: 30px;
-    width: 30px;
+    height: 2vw;
+    width: 2vw;
     border: 0px;
 }
 
+.likes{
+    margin-top: 1vh;
+    height: 2vw;
+    display: flex;
+    align-items: center;
+}
+.likes p{
+    margin: 0;
+    margin-left: 0.5vw;
+}
 
