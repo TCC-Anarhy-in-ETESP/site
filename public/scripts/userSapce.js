@@ -34,7 +34,6 @@ async function logBar(){
     const nav = document.querySelector("#userSapce")
     
     const { nome, foto_de_perfil } = resposta[0]
-    console.log(resposta[0])
 
     const userLogBar = document.createElement("div");
     userLogBar.style.display = "flex";
@@ -47,7 +46,6 @@ async function logBar(){
     userName.innerText = `${nome}`;
 
     const userPhoto = document.createElement("img");
-    console.log(foto_de_perfil)
     userPhoto.classList.add("user-photo");
     userPhoto.src = "../img/henrique.jpeg"
     userPhoto.src = foto_de_perfil;

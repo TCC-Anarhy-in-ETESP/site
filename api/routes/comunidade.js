@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const db = require("../postgre-con");
 const auth = require("../auth");
+const authPass = require("../authPass");
 
 router.post('/post-post', auth, async (req, res) =>{
     const {mensagem, imagem} = req.body;
@@ -40,74 +41,90 @@ router.post("/post-comment", auth, async (req, res) => {
     }
 });
 
-router.get("/get-posts-with-comments", async (req, res) => {
-    try{
-        
-        const res_posts = await db.query("select * from getposts()");
+router.get("/get-posts-with-comments", authPass, async (req, res) => {
+    const token = req.cookies.token;
+    if(!token){
+        try{
+            
+            const res_posts = await db.query("select * from getposts()");
 
-        var datas = []; 
+            var datas = []; 
 
-        for(i = 0; i < res_posts.length; i++){
-            const {p_id_post} = res_posts[i];
-            const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
-           
-            const data = {
-                post_comments : {
-                    post: await res_posts[i],
-                    comments: await res_comments
+            for(i = 0; i < res_posts.length; i++){
+                const {p_id_post} = res_posts[i];
+                const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
+            
+                const data = {
+                    post_comments : {
+                        post: await res_posts[i],
+                        comments: await res_comments
+                    }
                 }
-            }
 
-            datas.push(data)
+                datas.push(data)
+            }
+            
+            res.status(200).json({
+                mensagem: "Todos os posts pegos com sucesso.",
+                resultados: datas
+            });
+            
+        }catch(err){
+            res.status(404).json({
+                mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+                erros: err
+            });    
         }
-        
-        res.status(200).json({
-            mensagem: "Todos os posts pegos com sucesso.",
-            resultados: datas
-        });
-        
-    }catch(err){
-        res.status(404).json({
-            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
-            erros: err
-        });    
+    }else{
+        try{
+            
+            const res_posts = await db.query("select * from getpostsloged($1)", req.userid);
+
+            var datas = []; 
+
+            for(i = 0; i < res_posts.length; i++){
+                const {p_id_post} = res_posts[i];
+                const res_comments = await db.query("select * from getcommentsbypostloged($1, $2)", [req.userid, p_id_post]);
+            
+                const data = {
+                    post_comments : {
+                        post: await res_posts[i],
+                        comments: await res_comments
+                    }
+                }
+
+                datas.push(data)
+            }
+            
+            res.status(200).json({
+                mensagem: "Todos os posts pegos com sucesso.",
+                resultados: datas
+            });
+            
+        }catch(err){
+            res.status(404).json({
+                mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+                erros: err
+            });    
+        }
     }
 });
 
-router.get("/get-posts-with-comments-loged", auth, async (req, res) => {
+router.post("/like-post", auth, async(req, res) => {
+    const {id_post} = req.body;
     try{
-        const id = req.userid;
-        console.log(id);
-        const res_posts = await db.query("select * from getpostslog($1)", [id]);
-
-        var datas = []; 
-
-        for(i = 0; i < res_posts.length; i++){
-            const {p_id_post} = res_posts[i];
-            const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
-           
-            const data = {
-                post_comments : {
-                    post: await res_posts[i],
-                    comments: await res_comments
-                }
-            }
-
-            datas.push(data)
-        }
-        
+        const resultado = await db.query("select * from registerlikepost($1, $2)", [req.userid, id_post]);
         res.status(200).json({
-            mensagem: "Todos os posts pegos com sucesso.",
-            resultados: datas
+            resultado: resultado
         });
-        
-    }catch(err){
+    }catch{
         res.status(404).json({
             mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
             erros: err
-        });    
+        });   
     }
 });
+
 
 
 module.exports = router;
