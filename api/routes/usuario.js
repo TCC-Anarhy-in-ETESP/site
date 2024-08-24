@@ -6,17 +6,16 @@ const jwt = require('jsonwebtoken');
 const auth = require("../auth");
 const SECRET = 'nicolas';
 const path = require('path');
+
 // Endpoint de login
 router.post('/get-login', async function(req, res) {
     const {email, password} = req.body;
-    
-
     console.log("email: "+ email);
     console.log("password: "+password);
    
 
     try {
-        const usuario = await db.query("select id_usuario as id, gmail as gmailbd, senha as senhabd from TblUsuario where gmail like $1", [email]);
+        const usuario = await db(`select id_usuario as id, gmail as gmailbd, senha as senhabd from TblUsuario where gmail like ?`, [email]);
         const result = await bcrypt.compare(password, usuario[0].senhabd);
         const id = usuario[0].id;
 
@@ -37,19 +36,13 @@ router.post('/get-login', async function(req, res) {
     }
 });
 
-
-
-
 router.post('/post-signin', async function(req, res) {
     const { username, email,  password, imagem } = req.body;
     const passwordHash = await bcrypt.hash(password, 8);
     
     try {
-            await db.query("CALL sp_signin($1, $2, $3, $4);", [username, email, passwordHash, imagem]).then(()=>{
-           
-            res.redirect("/login");
-        });
-        
+        await db(`CALL sp_signin(?, ?, ?, ?);`, [username, email, passwordHash, imagem])
+        res.redirect("/login");
         
     }catch(err){
         res.status(404).send("falha de comunicação com o banco de dados \n erro: ", err);
@@ -57,19 +50,16 @@ router.post('/post-signin', async function(req, res) {
 });
 
 router.get("/get-usuario", auth,  async function (req, res){
-    
 
     try{
         const id = req.userid;
         console.log(id);
         
-        const usuario = await db.query("select nome, foto_de_perfil from TblUsuario where id_usuario = $1", [id]);
+        const usuario = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
         res.send(usuario)
     }catch(err){
         res.status(404).send("usuario nao encontrado", err);
     }
-
-
 });
 
 module.exports = router;

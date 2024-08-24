@@ -28,8 +28,9 @@ async function verifyCookie(){
 }
 
 async function logBar(){
+    console.log("Hello world")
     const resposta = await verifyCookie()
-    if(resposta === -1) return
+    if(resposta === -1) return 
 
     const nav = document.querySelector("#userSapce")
     
@@ -47,8 +48,12 @@ async function logBar(){
 
     const userPhoto = document.createElement("img");
     userPhoto.classList.add("user-photo");
-    userPhoto.src = "../img/henrique.jpeg"
-    userPhoto.src = foto_de_perfil;
+
+    if(foto_de_perfil == null){
+        userPhoto.src = "/img/princiapal.jpeg";
+    } else{
+        userPhoto.src = foto_de_perfil;
+    }
 
     userLogBar.appendChild(userName);
     userLogBar.appendChild(userPhoto);

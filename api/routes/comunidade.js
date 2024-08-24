@@ -9,7 +9,7 @@ router.post('/post-post', auth, async (req, res) =>{
     
     try{
 
-        db.query("select sendpost($1, $2, $3)", [req.userid, mensagem, imagem]);
+        db("select sendpost(?, ?, ?)", [req.userid, mensagem, imagem]);
         res.status(200).json({
             mensagem: "Post colocado na comunidade com sucesso",
         });
@@ -46,13 +46,14 @@ router.get("/get-posts-with-comments", authPass, async (req, res) => {
     if(!token){
         try{
             
-            const res_posts = await db.query("select * from getposts()");
+            const [res_posts] = await db("call getposts");
 
             var datas = []; 
 
             for(i = 0; i < res_posts.length; i++){
                 const {p_id_post} = res_posts[i];
-                const res_comments = await db.query("select * from getcommentsbypost($1)", p_id_post);
+                
+                const [res_comments] = await db("call getcommentsbypost(?)", p_id_post);
             
                 const data = {
                     post_comments : {
@@ -78,14 +79,17 @@ router.get("/get-posts-with-comments", authPass, async (req, res) => {
     }else{
         try{
             
-            const res_posts = await db.query("select * from getpostsloged($1)", req.userid);
+            const [res_posts] = await db("call getpostsloged(?)", req.userid);
 
             var datas = []; 
 
+
+
             for(i = 0; i < res_posts.length; i++){
                 const {p_id_post} = res_posts[i];
-                const res_comments = await db.query("select * from getcommentsbypostloged($1, $2)", [req.userid, p_id_post]);
-            
+                console.log(res_posts[i])
+                const [res_comments] = await db("call getcommentsbypostloged(?, ?)", [req.userid, p_id_post]);
+
                 const data = {
                     post_comments : {
                         post: await res_posts[i],
@@ -113,10 +117,93 @@ router.get("/get-posts-with-comments", authPass, async (req, res) => {
 router.post("/like-post", auth, async(req, res) => {
     const {id_post} = req.body;
     try{
-        const resultado = await db.query("select * from registerlikepost($1, $2)", [req.userid, id_post]);
-        res.status(200).json({
-            resultado: resultado
-        });
+        const resultado = await db("CALL registerlikepost(?, ?);", [req.userid, id_post]);
+        try{
+            const returning = resultado[0];
+            res.status(200).json({
+                resultado: returning[0]
+            });
+        }catch{
+            const returning = -1;
+            res.status(200).json({
+                resultado: returning
+            });
+        }
+        
+    }catch{
+        res.status(404).json({
+            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+            erros: err
+        });   
+    }
+});
+
+router.post("/dislike-post", auth, async(req, res) => {
+    const {id_post} = req.body;
+    try{
+        const resultado = await db("CALL registerdislikepost(?, ?)", [req.userid, id_post]);
+        try{
+            const returning = resultado[0];
+            res.status(200).json({
+                resultado: returning[0]
+            });
+        }catch{
+            const returning = -1;
+            res.status(200).json({
+                resultado: returning
+            });
+        }
+        
+    }catch{
+        res.status(404).json({
+            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+            erros: err
+        });   
+    }
+});
+
+
+
+router.post("/like-comment", auth, async(req, res) => {
+    const {id_post} = req.body;
+    try{
+        const resultado = await db("CALL registerlikecomment(?, ?);", [req.userid, id_post]);
+        try{
+            const returning = resultado[0];
+            res.status(200).json({
+                resultado: returning[0]
+            });
+        }catch{
+            const returning = -1;
+            res.status(200).json({
+                resultado: returning
+            });
+        }
+        
+    }catch{
+        res.status(404).json({
+            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+            erros: err
+        });   
+    }
+});
+
+router.post("/dislike-comment", auth, async(req, res) => {
+    const {id_post} = req.body;
+    try{
+        const resultado = await db("CALL registerdislikecomment(?, ?);", [req.userid, id_post]);
+        try{
+            const returning = resultado[0];
+            res.status(200).json({
+                resultado: returning[0]
+            });
+        }catch{
+            const returning = -1;
+            res.status(200).json({
+                resultado: returning
+            });
+        }
+        
     }catch{
         res.status(404).json({
             mensagem: "Erro, talvez o banco de dados esteja fora do ar.",

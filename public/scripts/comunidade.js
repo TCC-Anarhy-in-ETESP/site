@@ -1,8 +1,9 @@
 
 
+
 const hearts = document.querySelectorAll('.likes-heart');
 const containar = document.querySelector('#mgas');
-const postElemente = document.querySelector('.post')
+const postElemente = document.querySelector('.posts')
 
 
 async function getposts(){
@@ -21,6 +22,9 @@ async function getposts(){
 }
 
 async function likePost(id_post){
+    const data ={
+        id_post : id_post
+    }
     try{
         const resultado = await fetch("http://localhost:3000/like-post",{
             method: "POST",
@@ -28,7 +32,7 @@ async function likePost(id_post){
             headers: {
                 "Content-Type": "Application/json"
             },
-            body: JSON.stringify(id_post)
+            body: JSON.stringify(data)
         });
 
         return await resultado.json();
@@ -39,13 +43,82 @@ async function likePost(id_post){
     }
 }
 
+async function dislikePost(id_post){
+    const data ={
+        id_post : id_post
+    }
+    try{
+        const resultado = await fetch("http://localhost:3000/dislike-post",{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        return await resultado.json();
+
+    }catch(err){
+        console.log("erro: ", err); 
+        return -1
+    }
+}
+
+async function likeComment(id_post){
+    const data ={
+        id_post : id_post
+    }
+    try{
+        const resultado = await fetch("http://localhost:3000/like-comment",{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        return await resultado.json();
+
+    }catch(err){
+        console.log("erro: ", err); 
+        return -1
+    }
+}
+
+async function dislikeComment(id_post){
+    const data ={
+        id_post : id_post
+    }
+    try{
+        const resultado = await fetch("http://localhost:3000/dislike-comment",{
+            method: "POST",
+            credentials: "include",
+            headers: {
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        return await resultado.json();
+
+    }catch(err){
+        console.log("erro: ", err); 
+        return -1
+    }
+}
+
+
 async function placepost(){
     const {resultados} = await getposts();
+
     for(i = resultados.length - 1; i >= 0; i--){
         
         const {post_comments} = resultados[i];
         const {post} = post_comments;
         const {comments} = post_comments;
+
         
         const posts = postElemente.cloneNode(true);
         const userTag = posts.childNodes[1]
@@ -68,24 +141,35 @@ async function placepost(){
 
         const divlike = content.childNodes[5];
 
-        try{
-            if(post.p_liked == true){
-                divlike.childNodes[1].src = "/img/filled-heart.png"
-            }
-
-        }catch{
-
+        
+        if(post.p_liked == "TRUE"){
+            divlike.childNodes[1].src = "/img/filled-heart.png"
         }
-        //parei aqui
+        
+        
         divlike.childNodes[1].addEventListener("click", async (e)=>{
-            console.log(e);
+
             if(e.src = "public/img/empty-heart.png"){
-                divlike.childNodes[1].src = "/img/filled-heart.png";
-                const likedPost = await likePost();
-                divlike.childNodes[3].textContent = likedPost.p_curtidas;
-                console.log(likedPost);
+                try{
+                    const ressul = await likePost(post.p_id_post);
+
+                    if(ressul == -1) window.location.replace("http://localhost:3000/login")
+
+                    const {resultado} = ressul;
+                    divlike.childNodes[1].src = "/img/filled-heart.png";
+                    divlike.childNodes[3].textContent = resultado.p_curtidas;
+                    if(resultado == -1){
+                        divlike.childNodes[1].src = "/img/empty-heart.png";
+                        const {resultado} = await dislikePost(post.p_id_post);
+                        divlike.childNodes[3].textContent = resultado.p_curtidas;
+                        console.log("dislike ", resultado);
+                }
+                }catch{
+                    await fetch("http://localhost:3000/login");
+                }
+                
             }
-        })
+        });
 
         divlike.childNodes[3].textContent = post.p_curtidas
 
@@ -98,52 +182,72 @@ async function placepost(){
                 commentsClone.style.display = "flex";
                 content.appendChild(commentsClone);
 
-                const userTagComments = commentsClone.childNodes[1]
-                const contentComments = commentsClone.childNodes[3]
-                userTagComments.childNodes[3].textContent = comments[p].p_nome
+                const userTagComments = commentsClone.childNodes[1];
+                const contentComments = commentsClone.childNodes[3];
+                const comment = comments[p];
+                userTagComments.childNodes[3].textContent = comment.p_nome;
 
-                if(comments[p].p_imagem == null){
+                if(comment.p_foto_de_perfil == null){
                     userTagComments.childNodes[1].src = "/img/princiapal.jpeg";
                 } else{
-                    userTagComments.childNodes[1].src = comments[p].p_mensagem;
+                    userTagComments.childNodes[1].src = comment.p_foto_de_perfil;
                 }
 
-                contentComments.childNodes[1].textContent = comments[p].p_mensagem;
+                contentComments.childNodes[1].textContent = comment.p_mensagem;
 
-                if(comments[p].p_imagem == null){
+                if(comment.p_imagem == null){
                     contentComments.childNodes[3].style.display = "none";
                 }else{
-                    contentComments.childNodes[3].src = comments[p].p_imagem;
+                    contentComments.childNodes[3].src = comment.p_imagem;
                 }
 
                 const divlikeComments = contentComments.childNodes[5];
 
-                try{
-                    if(comments[p].p_liked == true){
+
+
+               
+                    if(comments[p].p_liked == "TRUE"){
                         divlikeComments.childNodes[1].src = "/img/filled-heart.png"
                     }
-        
-                }catch{
-        
-                }
 
-                divlikeComments.childNodes[3].textContent = comments[p].p_curtidas;
+                    divlikeComments.childNodes[1].addEventListener("click", async (e)=>{
+                        
+                        if(e.src = "public/img/empty-heart.png"){
+                            try{
+
+                                const ressul = await likeComment(comment.p_id_comentario);
+                                
+                                if(ressul == -1) window.location.replace("http://localhost:3000/login")
+            
+                                const {resultado} = ressul;
+                                divlikeComments.childNodes[1].src = "/img/filled-heart.png";
+                                divlikeComments.childNodes[3].textContent = resultado.p_curtidas;
+                                if(resultado == -1){
+                                    divlikeComments.childNodes[1].src = "/img/empty-heart.png";
+                                    const {resultado} = await dislikeComment(comment.p_id_comentario);
+                                    divlikeComments.childNodes[3].textContent = resultado.p_curtidas;
+                                    console.log("dislike ", resultado);
+                            }
+                            }catch{
+                                window.location.replace("http://localhost:3000/login")
+                            }
+                            
+                        }
+                    });
+            
+        
+                
+
+                divlikeComments.childNodes[3].textContent = comment.p_curtidas;
 
                 
-                console.log(divlikeComments.childNodes)
-
-
-                console.log(comments[p])
+                contentComments.style.display = "flex";
             }
         }else{
             content.childNodes[7].remove()
         }
         
         
-        
-       
-        
-
         posts.style.display = "flex";
         containar.appendChild(posts);
     }
@@ -151,10 +255,102 @@ async function placepost(){
 
 placepost()
 
+async function verifyCookie(){
+    try {
+        const resposta = await fetch("http://localhost:3000/get-usuario", {
+            method: "GET",
+            credentials: "include"
+        });
+
+        if (resposta.status === 401) {
+            return -1; 
+        }
+
+        if (!resposta.ok) {
+            throw new Error('Resposta da rede não foi ok'); 
+        }
+
+        // Retorna a resposta convertida para JSON
+        return await resposta.json(); 
+
+    } catch (err) {
+        
+        return -1; // Retorna null em caso de erro
+    }
+    
+}
+
+async function postPost(data){
+    try {
+        const resultado = fetch("http://localhost:3000/post-post",{
+            method: "POST",
+            credentials: "include",
+            headers:{
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(data)
+        })
+
+    }catch(err){
+        return -1
+    }
+}
+
+async function isLogged(){
+    const resposta = await verifyCookie()
+    if(resposta === -1) return;
+
+    const posting = document.querySelector("#posting-post");
+    posting.style.display = "flex";
+
+        const postDiv = posting.childNodes[1];
+
+            const user_tag = postDiv.childNodes[1];
+                const user_img = user_tag.childNodes[1];
+                const user_name = user_tag.childNodes[3];
+            
+            const content = postDiv.childNodes[3];
+                const formPosting = content.childNodes[1];
+                    const message = formPosting.elements.mensage;
+                    const image = formPosting.childNodes[3].childNodes[1];
+                    const submit = formPosting.elements[2]
+
+              
+    const { nome, foto_de_perfil } = resposta[0]
+
+    user_name.textContent = nome;
+    user_img.src = foto_de_perfil;
+
+    if(foto_de_perfil == null){
+        user_img.src = "/img/princiapal.jpeg";
+    } else{
+        user_img.src = foto_de_perfil;
+    }
+
+    submit.addEventListener('click', ()=>{
+        try{
+            const imagem = image.src == "http://localhost:3000/img/princiapal.jpeg"? "null" : image.src;
+            const data = {
+                mensagem: message.value, 
+                imagem: imagem
+            };
+
+            postPost(data);
+
+            window.alert("MENSAGEM POSTADA");
+
+            window.location.reload();
+        }catch(err){
+            console.log("erro: ", err);
+        }
+        
+
+        
+       
+    });
+}
+
+isLogged()
+
 
 // click heart toggle
-hearts.forEach((h)=>{
-    h.addEventListener('click', ()=>{
-        h.src = h.src == "http://localhost:3000/img/empty-heart.png"? "/img/filled-heart.png" : "/img/empty-heart.png"
-    });
-});

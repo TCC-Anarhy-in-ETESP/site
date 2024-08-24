@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-.post{
+.post, .posts{
     width: 60vw;
     padding: 0.5vw;
     background-color: #40659c;
@@ -61,11 +61,71 @@
     font-size: 3vh;
 }
 
-#mgas{
-    width: 90vw;
-    padding-left: 15vw;
-    padding-right: 15vw;
+.mgas{
+    width: 100vw;
+    display: flex;
+    justify-items: center;
+
 }
+
+.post-form{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(200, 202, 204);
+    position: relative;
+    border-radius: 10px;
+    
+  
+}
+
+div.imgpostdiv{
+    width: max-content;
+    height: 40vh;
+    margin: 0.5vw;
+    display: flex;
+    justify-content: center;
+
+    width: 50vw;
+}
+
+.imgpostdiv img{
+    width: max-content;
+    height: 40vh;
+  
+}
+
+.mensage{
+
+    background-color: white;
+    flex: 3;
+    overflow-x: auto;
+    margin: 0.5vw;
+    border-radius: 10px;
+}
+
+.display-posting{
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    padding: 0.5vw;
+    align-items: center;
+}
+
+.image{
+    position: relative;
+    align-content: center;
+    margin: 0px;
+    margin-right: 1vw;
+    
+
+}
+
+input[type="file"] {
+    opacity: 0;
+    inset: 0;
+    position: absolute;
+  }
+  
 
 .comments{
     display: flex;
@@ -101,3 +161,9 @@
     margin-left: 0.5vw;
 }
 
+.containere{
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+}

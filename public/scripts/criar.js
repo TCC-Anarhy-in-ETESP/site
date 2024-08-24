@@ -19,6 +19,7 @@ imagem.addEventListener('change', function(){
         const imagemGiven = imagem.files[0];
         console.log(imagemGiven)
         
+        
         const reader = new FileReader()
         reader.addEventListener('load', function(imagemGiven){
             const readerTargt = imagemGiven.target;
@@ -36,13 +37,12 @@ imagem.addEventListener('change', function(){
 
 
 submit.addEventListener('click', async () =>{
-    const data = { username: nome.value, 
+    const data = { 
+        username: nome.value, 
         email: email.value,  
         password: senha.value, 
         imagem: imagemToReplace.src
     };
-
-    console.log(data);
 
     try {
         const resultado = await fetch("http://localhost:3000/post-signin", {

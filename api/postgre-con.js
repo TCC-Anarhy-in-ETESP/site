@@ -1,7 +1,26 @@
-const pgp = require("pg-promise")();
+const mysql = require("mysql2/promise");
 
-const db = pgp("postgres://postgres:ag250507@localhost:5432/Jogo");
+async function conn(sqlquery, list) {
+   
+    try{
+        const db = await mysql.createConnection("mysql://root:ag250507@localhost/Jogo");
 
-console.log("conectado ao banco");
+        if(!list){
+            console.log(sqlquery)
+            const result = await db.query(sqlquery);
+            return result[0];
+        }
 
-module.exports = db;
+        console.log(sqlquery, list)
+        
+        const result = await db.query(sqlquery, list);
+        return result[0];
+
+       
+    }catch(err){
+        return err;
+    }
+    
+}
+   
+module.exports = conn;
