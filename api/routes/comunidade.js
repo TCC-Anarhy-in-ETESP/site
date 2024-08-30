@@ -24,11 +24,12 @@ router.post('/post-post', auth, async (req, res) =>{
 
 
 router.post("/post-comment", auth, async (req, res) => {
-    const {id_post, mensagem, imagem} = req.body;
+    const {id_post, mensagem} = req.body;
+    console.log(req)
     
     try{
 
-        db.query("select sendcomment($1, $2, $3, $4)", [id_post, req.userid, mensagem, imagem]);
+        db("select sendcomment(?, ?, ?)", [id_post, req.userid, mensagem]);
         res.status(200).json({
             mensagem: "comentario colocado na comunidade com sucesso"
         });

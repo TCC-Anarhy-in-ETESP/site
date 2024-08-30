@@ -9,7 +9,14 @@
     <link href="/login.css" rel="stylesheet">
     
 </head>
+
 <body>
+    <style>
+        .box, .box::after, .box::before{
+            height: 80vh;
+        }
+
+    </style>
     <div class="box">
         <div class="form" id="form-singn">
             <h2 class="text-center mt-4">Criar Conta</h2>
@@ -27,6 +34,10 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">Senha</label>
                             <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
+                        </div>
+                        <div class="mb-3">
+                            <label for="passwordConfirme" class="form-label">Confirmar senha</label>
+                            <input type="password" class="form-control" id="passwordConfirme" name="passwordConfirme" placeholder="Digite sua senha">
                         </div>
                     </div>
                     <div class="image-place">

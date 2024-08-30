@@ -48,7 +48,7 @@ body, html {
     border-radius: 10px;
 }
 .hero-image {
-    background-image: url('inicial.jpeg');
+    background-image: url('/img/imagem_fundo_de_fundo_jogo.png');
     background-size: cover;
     background-position: center;
     color: white;

@@ -21,11 +21,15 @@ router.post('/get-login', async function(req, res) {
 
         if(result){
             const token = jwt.sign({userid: id}, SECRET);
-            res.cookie("token", token, {httpOnly: true});
-            return res.redirect("/inicio")
-        } else {
+            res.cookie("token", token, {httpOnly: true}).json({
+                resultado : "logado"
+            });
             
-            return res.redirect("/login");
+        } else{
+            console.log("erro")
+            res.status(400).json({
+                resultado : "erro"
+            });
         }
 
         
@@ -41,8 +45,22 @@ router.post('/post-signin', async function(req, res) {
     const passwordHash = await bcrypt.hash(password, 8);
     
     try {
-        await db(`CALL sp_signin(?, ?, ?, ?);`, [username, email, passwordHash, imagem])
-        res.redirect("/login");
+        const resultado = await db(`CALL sp_signin(?, ?, ?, ?);`, [username, email, passwordHash, imagem]);
+
+        if(resultado.sqlMessage == "nome"){
+            res.status(200).json({
+                resultado : "nome"
+            });
+            return;
+        }else if(resultado.sqlMessage == "gmail"){
+            res.status(200).json({
+                resultado : "gmail"
+            });
+            return;
+        } 
+        res.status(200).json({
+            resultado : "Usuario cadastrado"
+        })
         
     }catch(err){
         res.status(404).send("falha de comunicação com o banco de dados \n erro: ", err);
@@ -53,8 +71,6 @@ router.get("/get-usuario", auth,  async function (req, res){
 
     try{
         const id = req.userid;
-        console.log(id);
-        
         const usuario = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
         res.send(usuario)
     }catch(err){

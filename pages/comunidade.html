@@ -71,7 +71,7 @@
     </div>
 
     <div class="containere" class="mgas" id="mgas">
-        <div class="posts" style="display: none;">
+        <div class="posts" >
 
             <div class="user-tag">
                 <img src="/img/augusto.jpeg" class="user-img" alt="imagem do usuario">
@@ -86,6 +86,32 @@
                 <div class="likes">
                     <img class="likes-heart" src="/img/empty-heart.png">
                     <P>100</P>
+                    <button class="btn btn-primary btn-comment">comentar</button>
+                </div>
+
+                <div class="comments posting-massage" >
+                    <div id="posting-massage" class="openComentarios">
+                        
+                        <div class="user-tag">
+                            <img src="/img/augusto.jpeg" class="user-img" alt="imagem do usuario">
+                            <p class="user-name">nicolas</p>
+                        </div>
+
+                        <div class="content">
+                            <form class="post-form" id="mesaging" onsubmit="return false">
+                                <textarea type="text" name="mensage" class="mensage" placeholder="mensagem" maxlength="255" rows="5" cols="60"></textarea>
+                                <div class="imgpostdiv" style="display: none;">
+                                    <img src="/img/princiapal.jpeg" alt="" id="imagePlacePosting" name="imagededinitiva">
+                                </div>
+                                <div class="display-posting">
+                                    <button class="btn btn-primary" type="submit">enviar</button>
+                                </div>
+                                
+                            </form>
+                            
+                        </div>
+                        <p></p>
+                    </div>
                 </div>
                 
 
@@ -103,6 +129,7 @@
                         <div class="likes">
                             <img class="likes-heart" src="/img/empty-heart.png">
                             <P>100</P>
+                            
                         </div>
                     </div>
                     

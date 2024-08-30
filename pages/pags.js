@@ -35,6 +35,9 @@ router.get('/criar', function(req,res){
 router.get('/login', function(req, res) {
     res.sendFile(path.join(__dirname + '/login.html'));
 });
+router.get('/conta', function(req, res){
+    res.sendFile(path.join(__dirname + '/usuario.html'))
+});
 
 
 module.exports = router;

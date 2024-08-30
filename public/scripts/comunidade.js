@@ -121,6 +121,7 @@ async function placepost(){
 
         
         const posts = postElemente.cloneNode(true);
+        postElemente.remove();
         const userTag = posts.childNodes[1]
         userTag.childNodes[3].textContent = post.p_nome;
 
@@ -173,7 +174,76 @@ async function placepost(){
 
         divlike.childNodes[3].textContent = post.p_curtidas
 
-        const commentsElemente = content.childNodes[7];
+        const commentsElemente = content.childNodes[9];
+
+        const commentSection = content.childNodes[7];
+
+        const commentArea = commentSection.childNodes[1].cloneNode(true);
+    
+        commentSection.childNodes[1].remove();
+
+       
+
+        divlike.childNodes[5].addEventListener('click', async () => {
+
+            const resposta = await verifyCookie();
+            if(resposta === -1) return window.location.replace("http://localhost:3000/login");
+            
+            if(commentSection.childNodes.length > 2){
+                return commentSection.childNodes[2].remove();    
+            }
+
+            if(document.querySelector("#posting-massage")){
+                document.querySelector("#posting-massage").remove()
+            }
+
+            const content_comment =  commentArea.childNodes[3];
+                const formPosting_comment = content_comment.childNodes[1];
+                    const message_comment = formPosting_comment.elements.mensage;
+                    const submit_comment = formPosting_comment.elements[1];
+
+            
+            
+            submit_comment.addEventListener('click', () => {
+
+                const data = {
+                    id_post : post.p_id_post,
+                    mensagem : message_comment.value
+                };
+
+                const treatReturn = postComment(data);
+
+                if(treatReturn == -1){
+                    console.log("o comentario não foi postado");
+                }else{
+
+                    window.alert("MENSAGEM POSTADA");
+                    window.location.reload();
+                }
+            });
+            
+            
+            commentSection.appendChild(commentArea);
+
+            document.addEventListener('scroll', function registerScroll ()  {
+                const {y} = commentArea.getBoundingClientRect();
+                if(y <= -100 || y >= 700){
+                    commentSection.childNodes[2].remove();
+                    document.removeEventListener('scroll', registerScroll);
+                }
+                console.log(y);
+            });
+
+            
+            
+      
+        });
+
+        
+       
+        
+        //BREAK
+
         
 
         if(comments.length >= 1){
@@ -202,9 +272,6 @@ async function placepost(){
                 }
 
                 const divlikeComments = contentComments.childNodes[5];
-
-
-
                
                     if(comments[p].p_liked == "TRUE"){
                         divlikeComments.childNodes[1].src = "/img/filled-heart.png"
@@ -243,8 +310,6 @@ async function placepost(){
                 
                 contentComments.style.display = "flex";
             }
-        }else{
-            content.childNodes[7].remove()
         }
         
         
@@ -296,6 +361,22 @@ async function postPost(data){
     }
 }
 
+async function postComment(data){
+    try {
+        fetch("http://localhost:3000/post-comment",{
+            method: "POST",
+            credentials: "include",
+            headers:{
+                "Content-Type": "Application/json"
+            },
+            body: JSON.stringify(data)
+        })
+
+    }catch(err){
+        return -1
+    }
+}
+
 async function isLogged(){
     const resposta = await verifyCookie()
     if(resposta === -1) return;
@@ -313,19 +394,38 @@ async function isLogged(){
                 const formPosting = content.childNodes[1];
                     const message = formPosting.elements.mensage;
                     const image = formPosting.childNodes[3].childNodes[1];
-                    const submit = formPosting.elements[2]
+                    const submit = formPosting.elements[2];
 
+
+
+    const commenting = document.querySelector('#posting-massage');
+
+        const user_tag_comment = commenting.childNodes[1];
+            const user_img_comment = user_tag_comment.childNodes[1];
+            const user_name_comment = user_tag_comment.childNodes[3];
+
+        const content_comment =  commenting.childNodes[3];
+            const formPosting_comment = content_comment.childNodes[1];
+                const message_comment = formPosting_comment.elements.mensage;
+                const submit_comment = formPosting_comment.elements[1];
+
+        
               
-    const { nome, foto_de_perfil } = resposta[0]
+    const { nome, foto_de_perfil } = resposta[0];
 
     user_name.textContent = nome;
-    user_img.src = foto_de_perfil;
+    user_name_comment.textContent = nome;
 
     if(foto_de_perfil == null){
         user_img.src = "/img/princiapal.jpeg";
+        user_img_comment.src = "/img/princiapal.jpeg";
+        
     } else{
         user_img.src = foto_de_perfil;
+        user_img_comment.src = foto_de_perfil;
     }
+
+
 
     submit.addEventListener('click', ()=>{
         try{
@@ -343,14 +443,9 @@ async function isLogged(){
         }catch(err){
             console.log("erro: ", err);
         }
-        
-
-        
-       
     });
+
+    
 }
 
 isLogged()
-
-
-// click heart toggle

@@ -167,3 +167,21 @@ input[type="file"] {
 
     align-items: center;
 }
+
+.btn-comment{
+    background-color: transparent;
+    border: 0px;
+    margin-left: 1vw;
+}
+
+
+div.openComentarios{
+    overflow: hidden;
+    animation: openComentarios 1s linear;
+    
+}
+
+@keyframes openComentarios {
+    from{height: 0px;}
+    to{height: 10px;}
+}
