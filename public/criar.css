@@ -1,0 +1,22 @@
+div#popping{
+    display: flex;
+    width: 50vw;
+    height: 80vh;
+    position: absolute;
+    z-index: 11;
+    
+}
+
+#pop{
+    display: flex;
+    position: absolute;
+    width: 50vw;
+    height: 80vh;
+    z-index: 11;
+}
+
+#formElementsCode .places{
+    margin-top: 20vh;
+    margin-bottom: 20vh;
+    flex-direction: column;
+}

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="comfirmarContent">
+
+        <style>
+            *{
+                margin:0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            div.comfirmarContent{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100vh;
+                position: static;
+                z-index: 100000;
+            }
+            div.blury{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                filter: blur(4px);
+                position: static;
+                z-index: 11;
+                
+            }
+            
+            div.comfirmar{
+                background-color: #002861;
+                width: 40vw;
+                height: 30vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5vh;
+                font-family: 'Poppins', sans-serif;
+                color: #fff;
+                border-radius: 2rem;
+                font-size: large;
+                position: absolute;
+                z-index: 12;
+               
+            }
+            div.opcoes{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10vw;
+            }
+            div.comfirmar button{
+                background-color: #1b0046;
+                font-size: large;
+                color: white;
+                width: 5vw;
+                height: 5vh;
+                border-radius: 1rem;
+            }
+            div.comfirmar button.btnVermelho:hover{
+                background-color: #ff2121;
+            }
+        </style>
+
+        <div class="comfirmar">
+            <h1>Deseja excluir a sua conta</h1>
+            <div class="opcoes">
+                <button class="btnVermelho" id="confirmarExclusao">sim</button>
+                <button id="negarExclusao">não</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

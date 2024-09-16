@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
     <link href="/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="/criar.css">
     
 </head>
 
@@ -17,45 +18,69 @@
         }
 
     </style>
-    <div class="box">
-        <div class="form" id="form-singn">
-            <h2 class="text-center mt-4">Criar Conta</h2>
-            <form id="formElements" onsubmit="return false">
-                <div class="places">
-                    <div class="text-place">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Nome</label>
-                            <input type="text" class="form-control" id="name" name="username" placeholder="Digite seu nome">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email</label>
-                            <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu Email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Senha</label>
-                            <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
-                        </div>
-                        <div class="mb-3">
-                            <label for="passwordConfirme" class="form-label">Confirmar senha</label>
-                            <input type="password" class="form-control" id="passwordConfirme" name="passwordConfirme" placeholder="Digite sua senha">
-                        </div>
-                    </div>
-                    <div class="image-place">
-                        <img src="/img/princiapal.jpeg" alt="foto de perfil" id="imagemToReplace">
 
-                        <input type="file" name="imagem" id="imagem" accept="imagem/*">
+    <main>
+        <div id="popping" style="display: none;">
+            <div class="form" id="pop" >
+                <form id="formElementsCode" onsubmit="return false">
+                    <h2 class="text-center mt-4">Olhe a sua caixa de emails</h2>
+                    <div class="places">
+                        <div class="text-place">
+                            <div class="mb-3">
+                                <h2 class="text-center mt-4" id="emailShow"></h2>
+                                <label for="code" class="form-label">Digite o codigo de verificação</label>
+                                <input type="text" class="form-control" id="codigo" name="code" placeholder="Codigo de verificação">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" id="submitAvancar">Avançar</button>
+                            
                     </div>
-                </div>
-                <button class="btn btn-primary" id="submit">Criar Conta</button>
-            </form>
-            <div class="links">
-                <a href="/login">Login</a>
-                <a href="/esqueceu">Esqueceu a Senha</a>
+                    
+                </form>
             </div>
-            <a href="/login" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para Login</a>
+
         </div>
-    </div>
-    <script src="/scripts/criar.js">
-    </script>
+        
+        <div class="box">
+            <div class="form" id="form-singn">
+                <h2 class="text-center mt-4">Criar Conta</h2>
+                <form id="formElements" onsubmit="return false">
+                    <div class="places">
+                        <div class="text-place">
+                            <div class="mb-3">
+                                <label for="username" class="form-label">Nome</label>
+                                <input type="text" class="form-control" id="name" name="username" placeholder="Digite seu nome">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu Email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="password" class="form-label">Senha</label>
+                                <input type="password" class="form-control" id="password" name="password" placeholder="Digite sua senha">
+                            </div>
+                            <div class="mb-3">
+                                <label for="passwordConfirme" class="form-label">Confirmar senha</label>
+                                <input type="password" class="form-control" id="passwordConfirme" name="passwordConfirme" placeholder="Digite sua senha">
+                            </div>
+                        </div>
+                        <div class="image-place">
+                            <img src="/img/princiapal.jpeg" alt="foto de perfil" id="imagemToReplace">
+
+                            <input type="file" name="imagem" id="imagem" accept="imagem/*">
+                        </div>
+                    </div>
+                    <button class="btn btn-primary" id="submit">Mandar codigo</button>
+                </form>
+                <div class="links">
+                    <a href="/login">Login</a>
+                    <a href="/esqueceu">Esqueceu a Senha</a>
+                </div>
+                <a href="/login" class="back-link"><i class="fas fa-arrow-left"></i> Voltar para Login</a>
+            </div>
+        </div>
+        <script src="/scripts/criar.js">
+        </script>
+    </main>
 </body>
 </html>

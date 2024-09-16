@@ -24,17 +24,19 @@ async function login(data){
 
 submit.addEventListener('click', async () => {
 
-    if(verifyPlaces > 0) return;
+    if(verifyPlaces() > 0){return};
 
     const data = {
         email : email.value,
         password : password.value
     };
+    try{
+        const rest = await login(data);
+        const {resultado} = await rest.json();
 
-    const rest = await login(data);
-    const {resultado} = await rest.json();
-
-    if(resultado == "logado") return window.location.replace("http://localhost:3000/inicio");
+        if(resultado == "logado") return window.location.replace("http://localhost:3000/inicio");
+    }catch{return;}
+    
 
     email.style.border = "1px red solid";
     password.style.border = "1px red solid";

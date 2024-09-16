@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const auth = require("../auth");
 const SECRET = 'nicolas';
 const path = require('path');
+const nodemailer = require('nodemailer');
+const { error } = require("console");
 
 // Endpoint de login
 router.post('/get-login', async function(req, res) {
@@ -16,7 +18,18 @@ router.post('/get-login', async function(req, res) {
 
     try {
         const usuario = await db(`select id_usuario as id, gmail as gmailbd, senha as senhabd from TblUsuario where gmail like ?`, [email]);
-        const result = await bcrypt.compare(password, usuario[0].senhabd);
+        let result = false;
+        
+        try{
+            result = await bcrypt.compare(password, usuario[0].senhabd);
+        }catch{
+            console.log("erro")
+            res.status(400).json({
+                resultado : "erro"
+            });
+            return;
+        }
+        
         const id = usuario[0].id;
 
         if(result){
@@ -46,7 +59,6 @@ router.post('/post-signin', async function(req, res) {
     
     try {
         const resultado = await db(`CALL sp_signin(?, ?, ?, ?);`, [username, email, passwordHash, imagem]);
-
         if(resultado.sqlMessage == "nome"){
             res.status(200).json({
                 resultado : "nome"
@@ -75,6 +87,115 @@ router.get("/get-usuario", auth,  async function (req, res){
         res.send(usuario)
     }catch(err){
         res.status(404).send("usuario nao encontrado", err);
+    }
+});
+
+router.patch("/patch-usuario", auth, async function (req, res){
+    const {username, email, password, imagem } = req.body;
+    const id = req.userid;
+    console.log("ate aqui foi")
+
+    try{
+        const usuario = await db(`call sp_atualizar(?, ?, ?, ?, ?);`, [id, username, email, password, imagem]);
+        res.status(200).json({
+            resultado : "Usuario atualizado"
+        });
+    }catch(err){
+        res.status(500).json({
+            resultado : "erro"
+        });
+    }
+});
+
+
+router.get("/excluir-conta", auth, async (req, res)=>{
+    try{
+        const usario = req.userid;
+        const [resposta] = await db(`call sp_excluir(?)`, usario);
+        const {excluido} = resposta[0];
+        if(excluido == "excluido"){
+            res.status(200).json({
+                resposta : "usuario excluido"
+            });
+        }
+        
+        throw new Error("usuario não foi excluido");
+        
+    }catch(err){    
+        res.status(500).json({
+            resposta: "erro", erro: err
+        });
+    }
+    
+})
+
+router.post("/sendemail", (req, res) =>{
+    const {email} = req.body;
+    console.log(email)
+    const codigo = Math.floor(Math.random() * 999999)
+    try{
+        const transport = nodemailer.createTransport({
+            host: 'smtp.mailersend.net',
+            port: 587,
+            secure: false,
+            auth:{
+                user: 'MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net',
+                pass: '9hjlOBepMiQ77GZq'
+            }
+        });
+    
+        transport.sendMail({
+            from: "ETESP Invasion <MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net>",
+            to: email,
+            subject: 'CONFIRMAÇÃO DO EMAIL ANARCHY IN ETESP',
+            html: `<h1>Hello world</h1><br><p>O codigo de verificação é: ${codigo}</p>`
+        })
+
+        res.status(200).json({
+            codigo: codigo
+        });
+    }catch(err){
+       res.status(500).json({
+            codigo: 'erro',
+            erro: err
+       });
+    }
+});
+
+router.get("/sendemail-logged", auth, async (req, res) =>{
+    try{
+        const user = req.userid;
+        const resposta = await db(`call sp_getuser(?);`, [user]);
+        const [{gmail}] = resposta[0];
+
+        const codigo = Math.floor(Math.random() * 999999)
+
+        const transport = nodemailer.createTransport({
+            host: 'smtp.mailersend.net',
+            port: 587,
+            secure: false,
+            auth:{
+                user: 'MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net',
+                pass: '9hjlOBepMiQ77GZq'
+            }
+        });
+    
+        transport.sendMail({
+            from: "ETESP Invasion <MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net>",
+            to: gmail,
+            subject: 'CONFIRMAÇÃO DO EMAIL ANARCHY IN ETESP',
+            html: `<h1>Hello world</h1><br><p>O codigo de verificação é: ${codigo}</p>`
+        });
+
+        res.status(200).json({
+            codigo: codigo
+        });
+    }catch(err){
+        res.status(500).json({
+            codigo: 'erro',
+            erro: err
+       });
+       return;
     }
 });
 

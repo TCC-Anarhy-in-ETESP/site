@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="comfirmarContent">
+        
+        <style>
+            *{
+                margin:0px;
+                padding: 0px;
+                box-sizing: border-box;
+            }
+            div.comfirmarContent{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100vh;
+                position: static;
+                z-index: 100000;
+            }
+            div.blury{
+                width: 100%;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                filter: blur(4px);
+                position: static;
+                z-index: 11;
+                
+            }
+            
+            div.comfirmar{
+                background-color: #002861;
+                width: 40vw;
+                height: 50vh;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2.5vh;
+                font-family: 'Poppins', sans-serif;
+                color: #fff;
+                border-radius: 2rem;
+                font-size: large;
+                position: absolute;
+                z-index: 12;
+               
+            }
+            div.opcoes{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10vw;
+            }
+            div.comfirmar button{
+                background-color: #1b0046;
+                font-size: large;
+                color: white;
+                width: 5vw;
+                height: 5vh;
+                border-radius: 1rem;
+            }
+            div.comfirmar button.btnVermelho:hover{
+                background-color: #ff2121;
+            }
+            .form-control{
+                width: 30vw;
+            }
+        </style>
+
+        <div class="comfirmar">
+            <h1>Verificação</h1>
+            <p>Verifique os seus emails</p>
+            <label for="codigo">Insira o codigo de verificação</label>
+            <input type="text" name="codigo" class="form-control" id="codigo">
+            <div class="opcoes">
+                <button id="avancarVerificacao">Avançar</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

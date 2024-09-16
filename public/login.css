@@ -7,7 +7,7 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+body, main{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,8 +18,8 @@ body {
 
 .box {
     position: relative;
-    width: 50.3vw;
-    height: 520px;
+    width: 55vw;
+    
     background: #002861;
     border-radius: 10px;
     overflow: hidden;
@@ -30,7 +30,7 @@ body {
 .box::after {
     content: '';
     position: absolute;
-    top: -50%;
+    top: -50%; 
     left: -50%;
     width: 50vw;
     height: 420px;
@@ -59,10 +59,10 @@ body {
 }
 
 .form {
-    position: absolute;
+    position: relative;
     inset: 2px;
     border-radius: 10px;
-    z-index: 10;
+    z-index: 1;
     background: #000f24;
     padding: 3rem 2rem;
     display: flex;

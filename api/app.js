@@ -2,6 +2,8 @@ const express = require("express");
 const cookieParse = require("cookie-parser")
 const app = express();
 
+
+
 const pags = require("../pages/pags");
 const usuario = require("./routes/usuario");
 const comunidade = require("./routes/comunidade");

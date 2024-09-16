@@ -16,6 +16,14 @@ router.get('/dev', function(req,res){
     res.sendFile(path.join(__dirname+'/dev.html'));
 
 });
+router.get('/viewExcluir', function(req,res){
+    res.sendFile(path.join(__dirname+'/usuarioView/excluirConta.html'));
+
+});
+router.get('/viewVerificacao', function(req,res){
+    res.sendFile(path.join(__dirname+'/usuarioView/verificaçãoConta.html'));
+
+});
 router.get('/comunidade', function(req,res){
     res.sendFile(path.join(__dirname+'/comunidade.html'));
 

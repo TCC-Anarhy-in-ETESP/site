@@ -1,0 +1,90 @@
+main{
+    width: 100%;
+    height: 65vh;
+    padding: 0px;
+    border: 0px;
+    display: flex;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    margin-top: 2vh;
+}
+
+section#right{
+    flex: 3;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+}
+
+section#right button{
+    width: 15vw;
+}
+section#right button#btnExcluir{
+    background-color: #ff2121;
+    border: #ff2121;
+}
+img#userImage{
+    border-radius: 100000000px;
+    height: 35vh;
+}
+
+p#userName{
+    margin-top: 1.75vh;
+    text-align: center;
+    font-weight: bold;
+    font-size: 5vh;
+    color: black;
+}
+button{
+    border: 0px;
+    border-radius: 0px;
+    background-color: transparent;
+}
+button#editPerfil, .image-place button, form input[type='file']{
+    background-color: #1b0046;
+    font-size: large;
+    color: white;
+    width: 20vw;
+    height: 5vh;
+    border-radius: 1vh;
+}
+button#editPerfil:hover{
+    opacity: 50%;
+}
+
+section#left{
+    flex: 7;
+}
+
+form {
+    font-weight: 600;
+    color: black;
+    font-size: 2.5vh;
+}
+
+.image-place{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.image-place button{
+    position: relative;
+    z-index: 1;
+}
+
+form input[type='file']{
+    position: absolute;
+    z-index: 2;
+    opacity: 0;
+    
+}
+
+div#placeAbove{
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}

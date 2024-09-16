@@ -112,19 +112,20 @@ async function dislikeComment(id_post){
 
 async function placepost(){
     const {resultados} = await getposts();
+    const postElementes = postElemente.cloneNode(true);
+    postElemente.remove();
 
     for(i = resultados.length - 1; i >= 0; i--){
         
         const {post_comments} = resultados[i];
         const {post} = post_comments;
         const {comments} = post_comments;
-
         
-        const posts = postElemente.cloneNode(true);
-        postElemente.remove();
+        const posts = postElementes.cloneNode(true);
+        
         const userTag = posts.childNodes[1]
         userTag.childNodes[3].textContent = post.p_nome;
-
+        
         if(post.p_foto_de_perfil == null){
             userTag.childNodes[1].src = "/img/princiapal.jpeg";
         } else{

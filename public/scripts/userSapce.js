@@ -57,6 +57,12 @@ async function logBar(){
 
     userLogBar.appendChild(userName);
     userLogBar.appendChild(userPhoto);
+
+    nav.addEventListener('click', () => {
+        window.location.replace("http://localhost:3000/conta");
+    });
+
+    nav.style.cursor = "pointer";
   
     nav.replaceChildren(userLogBar);
 }
