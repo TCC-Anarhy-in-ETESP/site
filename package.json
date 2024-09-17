@@ -124,6 +124,7 @@
     "is-weakref": "^1.0.2",
     "is-wsl": "^2.2.0",
     "isarray": "^2.0.5",
+    "js-cookie": "^3.0.5",
     "js-md4": "^0.3.2",
     "jsbi": "^4.3.0",
     "jsonwebtoken": "^9.0.2",
@@ -244,5 +245,9 @@
     "start": "nodemon api/server.js"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4"
+  }
 }

@@ -24,6 +24,14 @@ router.get('/viewVerificacao', function(req,res){
     res.sendFile(path.join(__dirname+'/usuarioView/verificaçãoConta.html'));
 
 });
+router.get('/viewMudarNome', function(req,res){
+    res.sendFile(path.join(__dirname+'/usuarioView/mudarNome.html'));
+
+});
+router.get('/viewMudarSenha', function(req,res){
+    res.sendFile(path.join(__dirname+'/usuarioView/mudarSenha.html'));
+
+});
 router.get('/comunidade', function(req,res){
     res.sendFile(path.join(__dirname+'/comunidade.html'));
 

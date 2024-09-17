@@ -53,6 +53,11 @@ router.post('/get-login', async function(req, res) {
     }
 });
 
+router.post('/logout', (req, res) => {
+    res.cookie('token', '', { httpOnly: true, expires:new Date("December 17, 1995 03:24:00") }).json({ resultado: 'logout bem-sucedido' });
+});
+
+
 router.post('/post-signin', async function(req, res) {
     const { username, email,  password, imagem } = req.body;
     const passwordHash = await bcrypt.hash(password, 8);
@@ -108,7 +113,7 @@ router.patch("/patch-usuario", auth, async function (req, res){
 });
 
 
-router.get("/excluir-conta", auth, async (req, res)=>{
+router.post("/excluir-conta", auth, async (req, res)=>{
     try{
         const usario = req.userid;
         const [resposta] = await db(`call sp_excluir(?)`, usario);
@@ -196,6 +201,32 @@ router.get("/sendemail-logged", auth, async (req, res) =>{
             erro: err
        });
        return;
+    }
+});
+
+router.post("/alterar-usuario", auth, async (req, res) => {
+
+    const usuario = req.userid;
+    const {nome, gmail, senha, foto} = req.body;
+    let senhaa = senha;
+
+    if(senha != "null"){
+        senhaa = await bcrypt.hash(senha, 8);
+    }
+
+
+    try{
+        await db(`call sp_atualizar(?, ?, ?, ?, ?)`, [usuario, nome, gmail, senhaa, foto])
+
+        res.status(200).json({
+            resposta : "usuario alterado"
+        })
+
+    }catch(err){
+        res.status(500).json({
+            resposta : "erro",
+            erro : err
+        });
     }
 });
 
