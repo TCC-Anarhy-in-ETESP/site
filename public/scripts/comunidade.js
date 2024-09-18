@@ -381,7 +381,7 @@ async function postComment(data){
 async function isLogged(){
     const resposta = await verifyCookie()
     if(resposta === -1) return;
-
+    console.log("logado")
     const posting = document.querySelector("#posting-post");
     posting.style.display = "flex";
 

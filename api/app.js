@@ -7,6 +7,7 @@ const app = express();
 const pags = require("../pages/pags");
 const usuario = require("./routes/usuario");
 const comunidade = require("./routes/comunidade");
+const gameMaker = require("./routes/game-maker");
 
 const bodyParser = require('body-parser');
 
@@ -26,6 +27,8 @@ app.use("/", pags);
 app.use("/", comunidade); 
 
 app.use("/", usuario);
+
+app.use("/", gameMaker);
 
 app.use("/teste", (req, res)=>{
     try{
