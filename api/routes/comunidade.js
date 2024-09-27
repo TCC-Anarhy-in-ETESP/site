@@ -115,6 +115,94 @@ router.get("/get-posts-with-comments", authPass, async (req, res) => {
     }
 });
 
+router.get("/get-posts-with-comments-user", auth, async (req, res) => {
+        try{
+            const resposta = await db("call getpostsbyuser(?)", req.userid);
+
+            if(resposta.sqlMessage == "vazio"){
+                res.status(200).json({
+                    post_comments: "vazio", 
+                });
+                return;
+            }
+
+            var datas = []; 
+
+            const [res_posts] = resposta;
+
+            for(i = 0; i < res_posts.length; i++){
+                const {p_id_post} = res_posts[i];
+                console.log(res_posts[i])
+                const [res_comments] = await db("call getcommentsbypostloged(?, ?)", [req.userid, p_id_post]);
+
+                const data = {
+                    post_comments : {
+                        post: await res_posts[i],
+                        comments: await res_comments
+                    }
+                }
+
+                datas.push(data)
+            }
+            
+            res.status(200).json({
+                mensagem: "Todos os posts pegos com sucesso.",
+                resultados: datas
+            });
+            
+        }catch(err){
+            res.status(404).json({
+                mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+                erros: err
+            });    
+        }
+    
+});
+
+router.get("/get-posts-with-comments-user-respostas", auth, async (req, res) => {
+    try{
+        const resposta = await db("call sp_getpostbycommentid(?)", req.userid);
+
+        if(resposta.sqlMessage == "vazio"){
+            res.status(200).json({
+                post_comments: "vazio", 
+            });
+            return;
+        }
+
+        var datas = []; 
+
+        const [res_posts] = resposta;
+
+        for(i = 0; i < res_posts.length; i++){
+            const {p_id_post} = res_posts[i];
+            console.log(res_posts[i])
+            const [res_comments] = await db("call getcommentsbypostloged(?, ?)", [req.userid, p_id_post]);
+
+            const data = {
+                post_comments : {
+                    post: await res_posts[i],
+                    comments: await res_comments
+                }
+            }
+
+            datas.push(data)
+        }
+        
+        res.status(200).json({
+            mensagem: "Todos os posts pegos com sucesso.",
+            resultados: datas
+        });
+        
+    }catch(err){
+        res.status(404).json({
+            mensagem: "Erro, talvez o banco de dados esteja fora do ar.",
+            erros: err
+        });    
+    }
+
+});
+
 router.post("/like-post", auth, async(req, res) => {
     const {id_post} = req.body;
     try{
@@ -213,6 +301,34 @@ router.post("/dislike-comment", auth, async(req, res) => {
     }
 });
 
+router.delete("/deletar-post", auth, async (req, res)=>{
+    const {id_post} = req.body;
+    try{
+        await db("call sp_excluirpost(?);", [id_post]);
+        res.status(200).json({
+            resposta : "post deletado"
+        })
+    }catch(err){
+        res.status(200).json({
+            resposta : "post não deletado",
+            err : err
+        })
+    }
+});
 
+router.delete("/deletar-comentario", auth, async (req, res)=>{
+    const {id_comentario} = req.body;
+    try{
+        await db("call sp_excluircomment(?);", [id_comentario]);
+        res.status(200).json({
+            resposta : "comentario deletado"
+        })
+    }catch(err){
+        res.status(200).json({
+            resposta : "comentario não deletado",
+            err : err
+        })
+    }
+});
 
 module.exports = router;

@@ -26,6 +26,9 @@ router.get('/viewVerificacao', function(req,res){
 });
 router.get('/viewMudarNome', function(req,res){
     res.sendFile(path.join(__dirname+'/usuarioView/mudarNome.html'));
+});
+router.get('/viewPostsUsuario', function(req,res){
+    res.sendFile(path.join(__dirname+'/usuarioView/postsUsuario.html'));
 
 });
 router.get('/viewMudarSenha', function(req,res){
