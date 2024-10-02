@@ -35,7 +35,8 @@ router.post('/get-login', async function(req, res) {
         if(result){
             const token = jwt.sign({userid: id}, SECRET);
             res.cookie("token", token, {httpOnly: true}).json({
-                resultado : "logado"
+                resultado : "logado",
+                token : token
             });
             
         } else{
@@ -92,6 +93,26 @@ router.get("/get-usuario", auth,  async function (req, res){
         res.send(usuario)
     }catch(err){
         res.status(404).send("usuario nao encontrado", err);
+    }
+});
+
+router.get("/get-usuario2", auth,  async function (req, res){
+
+    try{
+        const id = req.userid;
+        const [rseposta] = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
+        const {nome, foto_de_perfil} = rseposta;
+        
+        res.json({
+            nome : nome,
+            foto: foto_de_perfil
+        })
+        console.log(nome)
+    }catch(err){
+        res.status(404).json({
+            resposta : "erro",
+            erro : err
+        });
     }
 });
 

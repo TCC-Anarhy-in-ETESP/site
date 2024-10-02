@@ -28,7 +28,7 @@ app.use("/", comunidade);
 
 app.use("/", usuario);
 
-app.use("/", gameMaker);
+app.use("/gml", gameMaker);
 
 app.use("/teste", (req, res)=>{
     try{
