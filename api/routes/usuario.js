@@ -96,18 +96,61 @@ router.get("/get-usuario", auth,  async function (req, res){
     }
 });
 
-router.get("/get-usuario2", auth,  async function (req, res){
+router.get("/get-usuario2",  async function (req, res){
 
     try{
-        const id = req.userid;
-        const [rseposta] = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
-        const {nome, foto_de_perfil} = rseposta;
+
+    const {email, password} = req.body;
+    console.log("email: "+ email);
+    console.log("password: "+password);
+   
+
+    try {
+        const usuario = await db(`select id_usuario as id, gmail as gmailbd, senha as senhabd from TblUsuario where gmail like ?`, [email]);
+        let result = false;
         
-        res.json({
-            nome : nome,
-            foto: foto_de_perfil
-        })
+        try{
+            result = await bcrypt.compare(password, usuario[0].senhabd);
+        }catch{
+            console.log("erro")
+            res.status(400).json({
+                resultado : "erro"
+            });
+            return;
+        }
+        
+        const id = usuario[0].id;
+
+        if(result){
+            const token = jwt.sign({userid: id}, SECRET);
+
+            const [rseposta] = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
+            const {nome, foto_de_perfil} = rseposta;
+        
+            res.status(200).json({
+                resultado : "logado",
+                nome : nome,
+                foto: foto_de_perfil,
+                token : token
+            })
         console.log(nome)
+            
+        } else{
+            console.log("erro")
+            res.status(400).json({
+                resultado : "erro"
+            });
+        }
+
+        
+
+    }catch(err){
+        return console.log("merda", err);
+        
+    }
+
+        
+        
     }catch(err){
         res.status(404).json({
             resposta : "erro",
@@ -165,16 +208,60 @@ router.post("/sendemail", (req, res) =>{
             port: 587,
             secure: false,
             auth:{
-                user: 'MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net',
-                pass: '9hjlOBepMiQ77GZq'
+                user: 'MS_KOBEPk@trial-0r83ql35vyv4zw1j.mlsender.net',
+                pass: 'dBmcvuPOSv4ICPR9'
             }
         });
     
         transport.sendMail({
-            from: "ETESP Invasion <MS_DirzBk@trial-7dnvo4dvjrx45r86.mlsender.net>",
+            from: "Etesp <MS_KOBEPk@trial-0r83ql35vyv4zw1j.mlsender.net>",
             to: email,
             subject: 'CONFIRMAÇÃO DO EMAIL ANARCHY IN ETESP',
-            html: `<h1>Hello world</h1><br><p>O codigo de verificação é: ${codigo}</p>`
+            html: `
+            <style>
+            
+            .container {
+                max-width: 600px;
+                margin: auto;
+                background: #ffffff;
+                border: 1px solid #dddddd;
+                border-radius: 5px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+            }
+            .header {
+                text-align: center;
+                padding: 10px 0;
+            }
+            .code {
+                font-size: 24px;
+                font-weight: bold;
+                color: #4CAF50;
+                margin: 20px 0;
+            }
+            .footer {
+                text-align: center;
+                font-size: 12px;
+                color: #777777;
+                margin-top: 20px;
+            }
+        </style>
+                <div class="container">
+                    <div class="header">
+                        <h1>Verifique seu Email</h1>
+                    </div>
+                    <p>Olá,</p>
+                    <p>Obrigado por se cadastrar! Para verificar seu email, utilize o código abaixo:</p>
+                    <div class="code">${codigo}</div>
+                    <p>Insira este código no campo de verificação em nosso site.</p>
+                    <p>Se você não se cadastrou em nosso site, ignore este email.</p>
+                    <div class="footer">
+                        <p>Atenciosamente,<br>A Equipe de Suporte</p>
+                        <p>&copy; 2024 Sua Empresa. Todos os direitos reservados.</p>
+                    </div>
+                </div>
+            </body>
+            `
         })
 
         res.status(200).json({

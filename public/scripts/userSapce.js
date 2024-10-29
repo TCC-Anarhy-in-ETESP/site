@@ -31,7 +31,7 @@ async function logBar(){
     console.log("Hello world")
     const resposta = await verifyCookie()
     if(resposta === -1) return 
-    const nav = document.querySelector("#userSapce")
+    const nav = document.querySelector("header #userSapce")
     console.log(resposta)
     const { nome, foto_de_perfil } = resposta[0]
 

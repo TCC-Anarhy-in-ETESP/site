@@ -368,6 +368,27 @@ background-color: #010413;
 .col-md-8{
     background-color: #000000;
 }
+
+.espacamento-header{
+    height: 7.5vh;
+}
+
+.footer{
+    margin-top: 0px;
+}
+
+.footer .container p{
+    justify-content: center;
+}
+
+
+
+header {
+    position: fixed;
+    z-index: 10000;
+    width: 100%;
+    top: 0px;
+}
 @media (max-width: 768px) {
     .card-img-top {
         width: 150px;

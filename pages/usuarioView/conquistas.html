@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="conquistas">
+       
+        <div class="conquista">
+
+            <style>
+                div.conquista{
+                    width: 50vw;
+                    background-color: #001027;
+                    display: flex;
+                    flex-direction: column;
+                    color: white;
+                }
+                div.conquista-div, div.conquista-progressbar{
+                    display: flex;
+                    flex-direction: column;
+                    width: 85%;
+                    margin-left: 10%;
+                    padding-right: 5%;
+                    font-family: "Roboto", sans-serif;
+                    font-weight: 500;      
+                    font-size: 1rem;
+                    margin-top: 5vh;
+                }
+                h1.conquista-titulo{
+                    text-align: center;
+                }
+                p.conquista-descricao{
+                    text-align: center;
+                }
+                div.conquista-progressbar{
+                    margin: 0;
+                    padding: 0;
+                    width: 100%;
+                    height: 2.5vw;
+                    align-items: center;
+                    flex-direction: row;
+                }
+                div.conquista-progress{
+                    flex: 9;
+                    display: block;
+                    height: 1vh;
+                    background-color: aliceblue;
+                    overflow: hidden;
+                }
+                p.conquista-porcentagem{
+                    flex: 1;
+                    text-align: center;
+                }
+                div.progress-barra{
+                    height: 100%;
+                    width: 0%;
+                    background-color: blueviolet;
+                }
+            </style>
+
+
+            <div class="conquista-div">
+                <div class="conquista-content">
+                    <h1 class="conquista-titulo"></h1>
+                    <p class="conquista-descricao"></p>
+                </div>
+
+                <div class="conquista-progressbar">
+                    <div class="conquista-progress">
+                        <div class="progress-barra"></div>
+                    </div>
+                    <p class="conquista-porcentagem">0%</p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,18 +1,21 @@
 const btnPostsMenu = document.querySelector("#btnPostsMenu");
 const btnRespostasMenu = document.querySelector("#btnRespostasMenu");
+const btnConquista = document.querySelector("#btnConquista");
 const content = document.querySelector("#content");
 
 
 btnPostsMenu.addEventListener("click", selecionarPosts);
 btnRespostasMenu.addEventListener("click", selecionarRespostas);
+btnConquista.addEventListener("click", selecionarConquista)
 
 let selecionado = "respostas";
 selecionarPosts();
 
 async function selecionarPosts(){
-    if(selecionado == "respostas"){
+    if(selecionado != "posts"){
         btnPostsMenu.style.backgroundColor  = "#001027";
         btnRespostasMenu.style.backgroundColor  = "#0d1f3a";
+        btnConquista.style.backgroundColor = "#0d1f3a";
         selecionado = "posts";
         content.innerHTML = "";
         
@@ -485,9 +488,10 @@ async function deletarComentario(id_comentario) {
 }
 
 async function selecionarRespostas(){
-    if(selecionado == "posts"){
+    if(selecionado != "respostas"){
         btnRespostasMenu.style.backgroundColor  = "#001027";
         btnPostsMenu.style.backgroundColor  = "#0d1f3a";
+        btnConquista.style.backgroundColor = "#0d1f3a";
         selecionado = "respostas";
         content.innerHTML = "";
 
@@ -786,4 +790,80 @@ async function postComment(data){
     }catch(err){
         return -1
     }
+}
+
+async function getViewConquista(){
+    try{
+        const resposta = await fetch("http://localhost:3000/viewConquista");
+        const responseHTML = await resposta.text();
+        
+        const parseToHTML = document.createElement('div');
+        parseToHTML.innerHTML = responseHTML;
+
+        const divConquista = parseToHTML.querySelector(".conquista");
+        console.log(divConquista)
+        return divConquista;
+    }catch(err){
+        return -1
+    }
+    
+
+}
+
+async function getConquistas(){
+    try{
+        const resposta = await fetch("http://localhost:3000/gml/conquista/pegar", {
+            method: "GET",
+            credentials: "include"
+        });
+        return await resposta.json();
+    }catch{
+        return -1;
+    }
+}
+
+async function selecionarConquista(){
+    if(selecionado != "conquista"){
+        btnRespostasMenu.style.backgroundColor  = "#0d1f3a";
+        btnPostsMenu.style.backgroundColor  = "#0d1f3a";
+        btnConquista.style.backgroundColor = "#001027";
+        selecionado = "conquista";
+        content.innerHTML = "";
+        
+        const conquista = await getViewConquista();
+
+        if(conquista == -1){
+            return console.log("erro ao carregar view");
+        }
+
+        const {resposta} = await getConquistas();
+
+        for(i=0; i<resposta.length; i++){
+            const divConquista = conquista.cloneNode(true);
+            
+            const quest = resposta[i];
+
+            const titulo = divConquista.querySelector(".conquista-titulo");
+            const descricao = divConquista.querySelector(".conquista-descricao");
+            const barra = divConquista.querySelector(".progress-barra");
+            const porcentagem = divConquista.querySelector(".conquista-porcentagem");
+
+            console.log(quest)
+
+            const porcen = ((quest.progresso / quest.desafio).toFixed(2)) * 100;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+
+            titulo.textContent = quest.nome;
+            descricao.textContent = quest.descricao;
+            barra.style.width = `${porcen}%`;
+            porcentagem.textContent = `${porcen}%`;
+            
+            content.appendChild(divConquista);
+        }
+        
+
+
+
+    
+    }
+
 }

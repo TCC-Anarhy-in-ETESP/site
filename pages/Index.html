@@ -3,77 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anarchy in ETESP</title>
+    <title>inicio - THE VISITOR</title>
     <link rel="icon" href="/img/icone.png" type="image/png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/Index.css"> 
+    <link rel="stylesheet" href="/conteudo.css"> 
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-center justify-content-center" href="/inicio">
-                <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
-                <span>Anarchy in ETESP</span>
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item" >
-                        <a class="nav-link"  href="/dev" >Developers</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/forum">Forum</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/comunidade">Comunidade</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav" >
-                    <li class="nav-item" id="userSapce">
-                        <a class="nav-link btn btn-primary text-white" href="/login">Login</a>
-                        <a class="nav-link btn btn-primary text-white" href="/criar">criar</a>
-                    </li>
-                </ul>
+    <div class="espacamento-header"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/inicio">
+                    <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
+                    <span>THE VISITOR</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item" >
+                            <a class="nav-link"  href="/dev" >Developers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/forum">Forum</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/comunidade">Comunidade</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" >
+                        <li class="nav-item" id="userSapce">
+                            <a class="nav-link btn btn-primary text-white" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary text-white" href="/criar">criar</a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </header>
+    
     
 <div class="hero-image">
+    <div class="black"></div>
     <div class="hero-text">
-        <img src="/etesp.png" alt="ETESP">
+        <img id="a" src="/etesp.png" alt="ETESP">
     </div>
 </div>
-    <img src="/img/imagem_fundo_de_fundo_jogo.pgn" alt="">
-    <div class="container text-center my-4">
-        <div class="button-container">
-            <a href="#" class="button">Conquistas</a>
-            <a href="#" class="button">Comunidade</a>
-            <a href="#" class="button">Curiosidades</a>
-        </div>
-    </div>
-    <div class="d-flex justify-content-center">
-        <div class="row container sobreojogo">
-            <div class="col-md-6 txtsobre">
-                <h1 class="p-1 bg-light ">Sobre o nosso jogo</h1>
-                <p class="p-1">Embarque numa jornada emocionante com Lonely, 
-                    um jovem corajoso que acaba de ingressar em uma escola desconhecida. 
-                    Determinado a formar novas amizades, 
-                    Lonely se vê imerso em um mundo completamente novo, 
-                    cheio de desafios e oportunidades. No entanto, 
-                    enquanto navega por este ambiente complexo, 
-                    ele inadvertidamente se envolve em situações indesejadas, 
-                    enfrentando dilemas que testam sua moral e seus valores.
-                    Acompanhe Lonely enquanto ele descobre mais sobre si mesmo e os outros, 
-                    em uma história de amadurecimento, escolhas difíceis e a busca por pertencimento.</p>
+ 
+    <container class="container-with-content">
+
+      
+            <div class="div-with-img">
+                <div>
+                    <img src="/img/inicio_fototexto.png" alt="">
+                </div>
+                
+                <p>
+                    The visitor é um jogo rougue like, onde você precisa derrotar aliens que estão dominando e se infiltrando na nossa sociedade.
+                    O ponto inicial de encontro entre essas criaturas e a humanidade foi uma escola localiazada no bairro Bom Retiro, a ETESP. O seu estado inicial
+                    é de completa destruição e dominio das forças externas, mas lonely ira tentar destruir todas as criaturas desconhecidas de outro planeta.
+                </p>
             </div>
-            <div class="col-md-6">
-                <img src="/img/exemplo.jpg" alt="Imagem" class="custom-img">
+            
+       
+        
+        <section class="section-with-content">
+            <div class="button-container">
+                <a href="#" class="button" onmouseenter="alternate_pimg('Criaturas')">Criaturas</a>
+                <a href="#" class="button" onmouseenter="alternate_pimg('Lugares')">Lugares</a>
+                <a href="#" class="button" onmouseenter="alternate_pimg('Personagens')">Personagens</a>
             </div>
+            <div class="buttons-pag-content">
+                
+                <p>As criaturas que invadiram a escola têm tanto sua origem quanto seu objetivo desconhecidos, embora alguns antigos manuscritos mencionem esses seres por conta de encontros anteriores. Esses registros sugerem que, mesmo sem entendermos totalmente sua natureza ou propósito, essas criaturas já estiveram presentes antes e são envoltas em mistério.</p>
+                <img src="/img/combate_gif.gif" alt="" autoplay>
+            </div>
+        </section>
+
+       
+
+        <div class="div-with-space">
+            <div class="div-with-and-section-space"></div>
+            <div class="div-with-planet">
+
+                <div class="planeta">
+                    <h1 class="div-with-planet-h1">DOWNLOAD</h1>
+                    <img src="/img/planeta.gif" alt="">
+                </div>
+
+            </div>
+
+            <img src="/img/espaco.gif" class="space" alt="">
+
+            <div class="download-area">
+                <div class="downloads">
+                    <h1>DESKTOP</h1>
+                </div>
+                <div class="downloads">
+                    <h1>MOBILE</h1>
+                </div>
+            </div>
+
+            <img src="/img/espaco.gif" class="space" alt="">
         </div>
-    </div>
+
+    </container>
     <br>
     <footer class="footer text-white text-center">
         <div class="container">
@@ -106,6 +143,62 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="/scripts/userSapce.js"></script>
+    <script>
+        function alternate_pimg(nome){
+            let p = "";
+            let img = "";
+
+            switch (nome) {
+                case 'Criaturas':
+                    p = "As criaturas que invadiram a escola têm tanto sua origem quanto seu objetivo desconhecidos, embora alguns antigos manuscritos mencionem esses seres por conta de encontros anteriores. Esses registros sugerem que, mesmo sem entendermos totalmente sua natureza ou propósito, essas criaturas já estiveram presentes antes e são envoltas em mistério.";
+                    img = "/img/combate_gif.gif";
+                break;
+                case 'Lugares':
+                    p = "Percorra todos os lugares do jogo em busca de pistas para entender o que está acontecendo e desvendar o mistério por trás da invasão alienígena. Enfrente cada desafio e derrote os aliens com o objetivo final de salvar todos que estão na escola, restaurando a paz e a segurança no local.";
+                    img = "/img/button_lugares.gif";
+                break;
+                case 'Personagens':
+                    p = "Ao longo dessa jornada, você encontrará alguns de seus colegas e terá a oportunidade de conversar com eles para obter pistas e informações sobre o que está acontecendo. Esses diálogos poderão revelar detalhes importantes sobre a invasão, ajudando você a entender melhor a situação e a encontrar maneiras de enfrentar os desafios que surgirem.";
+                    img = "/img/button_personagens.gif";
+                break;
+                default:
+                    return console.log("erro");
+            }
+            const buttons_show = document.querySelector('.buttons-pag-content');
+            const button_p = buttons_show.childNodes[1];
+            const button_img = buttons_show.childNodes[3]
+
+            button_p.textContent = p;
+            button_img.src = img;
+
+        }
+
+        const div_with_plannet = document.querySelector(".div-with-planet");
+
+        const myObserver = new IntersectionObserver( (div) =>{
+            const target = div[0].target
+            
+            switch (target.className){
+                case "div-with-planet":
+                    if(div[0].isIntersecting == true){
+                        target.childNodes[1].childNodes[1].className = "div-show"
+                    }else {
+                        target.childNodes[1].childNodes[1].className = "div-with-planet-h1"
+                    }
+                    break;
+                    
+                    
+
+            }
+            console.log(div[0].target)
+
+            
+        });
+
+        myObserver.observe(div_with_plannet)
+
+
+    </script>
     
 </body>
 </html>

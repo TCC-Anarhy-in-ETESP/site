@@ -5,7 +5,7 @@ const auth = require("../auth");
 const authPass = require("../authPass");
 
 router.patch("/conquista/atualizar", auth, async (req, res)=>{
-    const {playerid, conquistaid, num} = req.body;
+    const {conquistaid, num} = req.body;
     const userid = req.userid;
     const missoesid = parseInt(conquistaid);
     const numero = parseInt(num);
@@ -24,6 +24,7 @@ router.patch("/conquista/atualizar", auth, async (req, res)=>{
 
 router.get("/conquista/pegar", auth, async (req, res)=>{
     const userid = req.userid;
+    console.log("id: "+userid);
     try{
         const [resposta] = await db(`call sp_getprogresso(?)`, [userid]);
         const [respos] = resposta

@@ -19,7 +19,7 @@ module.exports = (req, res, next)=>{
             });
         }else{
             const token1 = req.cookies.token;
-            console.log("token " + token)
+            console.log("token " + token1)
             jwt.verify(token1, SECRET, (err, decoded) => {
                 if (err) {
                     return res.status(401).json({
