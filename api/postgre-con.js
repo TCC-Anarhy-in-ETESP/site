@@ -3,7 +3,8 @@ const mysql = require("mysql2/promise");
 async function conn(sqlquery, list) {
    
     try{
-        const db = await mysql.createConnection("mysql://root:ag250507@localhost/Jogo");
+        console.log(process.env.STRING_CONN)
+        const db = await mysql.createConnection(process.env.STRING_CONN);
 
         if(!list){
             console.log(sqlquery)

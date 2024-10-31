@@ -1,7 +1,9 @@
 const express = require("express");
 const cookieParse = require("cookie-parser")
+const dotenv = require("dotenv")
 const app = express();
 
+dotenv.config()
 
 
 const pags = require("../pages/pags");
