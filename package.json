@@ -244,7 +244,7 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "nodemon api/server.js"
+    "start": "node api/server.js"
   },
   "author": "",
   "license": "ISC",
