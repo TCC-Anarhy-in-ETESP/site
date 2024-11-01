@@ -239,7 +239,10 @@
     "which-typed-array": "^1.1.15",
     "wide-align": "^1.1.5",
     "wrappy": "^1.0.2",
-    "yallist": "^4.0.0"
+    "yallist": "^4.0.0",
+    "engines": {
+      "node": "14.x"
+    }
   },
   "scripts": {
     "start": "nodemon api/server.js"
