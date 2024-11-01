@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": { "node": "20.x" },
+  "engines": {
+    "node": "20.x"
+  },
   "dependencies": {
     "abbrev": "^1.1.1",
     "abort-controller": "^3.0.0",
@@ -150,7 +152,6 @@
     "minizlib": "^2.1.2",
     "mkdirp": "^1.0.4",
     "ms": "^2.0.0",
-    "msnodesqlv8": "^4.2.1",
     "mssql": "^10.0.4",
     "multer": "^1.4.5-lts.1",
     "mysql2": "^3.11.0",
