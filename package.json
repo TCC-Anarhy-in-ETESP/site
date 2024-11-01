@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+      "node": "14.x"
+    },
   "dependencies": {
     "abbrev": "^1.1.1",
     "abort-controller": "^3.0.0",
@@ -239,11 +242,7 @@
     "which-typed-array": "^1.1.15",
     "wide-align": "^1.1.5",
     "wrappy": "^1.0.2",
-    "yallist": "^4.0.0",
-    "engines": {
-      "node": "14.x"
-      
-    }
+    "yallist": "^4.0.0"
   },
   "scripts": {
     "start": "nodemon api/server.js"
