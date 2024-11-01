@@ -1,5 +1,5 @@
 {
-    "version" : 2,
+    "version": 2,
     "builds": [
         {
             "src": "./api/server.js",
@@ -9,7 +9,13 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/" 
+            "dest": "/"
         }
-    ]
+    ],
+    "build": {
+        "env": {
+            "NODE_ENV": "production"
+        },
+        "installCommand": "apt-get update && apt-get install -y unixodbc-dev && npm install"
+    }
 }
