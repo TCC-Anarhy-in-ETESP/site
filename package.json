@@ -243,7 +243,8 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "nodemon api/server.js"
+    "start": "nodemon api/server.js",
+    "postinstall": "curl -o /usr/include/sqltypes.h https://example.com/path/to/sqltypes.h"
   },
   "author": "",
   "license": "ISC",
