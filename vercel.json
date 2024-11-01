@@ -1,7 +1,6 @@
 {
     "version" : 2,
-    "buildCommand": "npm run start",
-    "build": [
+    "builds": [
         {
             "src": "./api/server.js",
             "use": "@vercel/node"
