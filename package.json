@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "engines": {
-      "node": "14.x"
-    },
+  "engines": { "node": "20.x" },
   "dependencies": {
     "abbrev": "^1.1.1",
     "abort-controller": "^3.0.0",
