@@ -244,7 +244,7 @@
   },
   "scripts": {
     "start": "nodemon api/server.js",
-    "postinstall": "curl -o /usr/include/sqltypes.h https://example.com/path/to/sqltypes.h"
+    "postinstall": "curl -LO https://your-link-to-libodbc.so.2 && cp libodbc.so.2 /usr/lib/"
   },
   "author": "",
   "license": "ISC",
