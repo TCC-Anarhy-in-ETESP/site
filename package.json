@@ -244,8 +244,7 @@
     "yallist": "^4.0.0"
   },
   "scripts": {
-    "start": "nodemon api/server.js",
-    "postinstall": "curl -LO https://your-link-to-libodbc.so.2 && cp libodbc.so.2 /usr/lib/"
+    "start": "nodemon api/server.js"
   },
   "author": "",
   "license": "ISC",
