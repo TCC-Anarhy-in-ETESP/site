@@ -28,7 +28,7 @@ section h1{
     color: white;
 }
 
-div.box-for-admins, div.board-options-admin{
+div.box-for-admins, div.board-options-admin, div.box-for-banimentos{
     width: 100%;
     height: 100%;
     display: flex;
@@ -97,3 +97,14 @@ div.box-for-admins::-webkit-scrollbar {
   div.box-for-admins::-webkit-scrollbar-thumb:hover {
     background: #555; 
   }
+div.add-admin{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+}
+div.add-admin input{
+    flex:8;
+}
+div.add-admin button{
+    flex:2;
+}

@@ -9,7 +9,8 @@ router.post('/post-post', auth, async (req, res) =>{
     
     try{
 
-        db("select sendpost(?, ?, ?)", [req.userid, mensagem, imagem]);
+        await db("call sendpost(?, ?, ?)", [req.userid, mensagem, imagem]);
+        
         res.status(200).json({
             mensagem: "Post colocado na comunidade com sucesso",
         });
@@ -29,7 +30,7 @@ router.post("/post-comment", auth, async (req, res) => {
     
     try{
 
-        db("select sendcomment(?, ?, ?)", [id_post, req.userid, mensagem]);
+        await db("call sendcomment(?, ?, ?)", [id_post, req.userid, mensagem]);
         res.status(200).json({
             mensagem: "comentario colocado na comunidade com sucesso"
         });
