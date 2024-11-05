@@ -16,6 +16,10 @@ router.get('/dev', function(req,res){
     res.sendFile(path.join(__dirname+'/dev.html'));
 
 });
+router.get('/admin', function(req,res){
+    res.sendFile(path.join(__dirname+'/admin.html'));
+
+});
 router.get('/viewConquista', function(req,res){
     res.sendFile(path.join(__dirname+'/usuarioView/conquistas.html'));
 

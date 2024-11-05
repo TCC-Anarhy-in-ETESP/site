@@ -28,6 +28,7 @@ module.exports = (req, res, next)=>{
                 }
         
                 req.userid = decoded.userid;
+                req.admin = decoded.admin;
                 next();
             });
         
