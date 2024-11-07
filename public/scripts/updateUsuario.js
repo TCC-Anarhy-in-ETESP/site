@@ -150,7 +150,7 @@ async function loggout(){
     });
 
     window.location.reload();
-    window.location.replace("http://localhost:3000/inicio");
+    window.location.replace("http://localhost:3000/");
     
 }
 

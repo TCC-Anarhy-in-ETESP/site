@@ -17,7 +17,7 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/inicio">
+                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
                     <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
                     <span>ETESP INVASION</span>
                 </a>
@@ -55,10 +55,19 @@
                 <p id="userName">Augusto</p>
 
             </div>
-            <button class="btn btn-primary" id="btnNome">Trocar nome</button>  
-            <button class="btn btn-primary" id="btnSenha">Trocar senha</button>  
-            <button class="btn btn-primary" id="btnExcluir">Excluir conta</button>  
-            <button class="btn btn-primary" id="btnSair">Sair conta</button> 
+
+            
+            <div class="buttons-overview">
+                <button class="btn btn-primary mobile" onclick="open_buttons()">opções</button>  
+                <div class="buttons">
+                    <button class="btn btn-primary" id="btnNome">trocar nome</button>  
+                    <button class="btn btn-primary" id="btnSenha">trocar senha</button>  
+                    <button class="btn btn-primary" id="btnExcluir">excluir conta</button>  
+                    <button class="btn btn-primary" id="btnSair">sair conta</button> 
+                </div>
+            </div>
+            
+            
 
         </section>
 
@@ -67,7 +76,7 @@
                 <div class="display-buttons">
                     <button type="button" id="btnPostsMenu">posts</button>
                     <button type="button" id="btnRespostasMenu">respostas</button>
-                    <button type="button" id="btnConquista">conquistas</button>
+                    <button type="button" id="btnConquista" onclick="ajust_div_conquista()">conquistas</button>
                 </div>
                 <div id="content">
                     
@@ -110,5 +119,28 @@
     <script src="/scripts/userSapce.js"></script>
     <script src="/scripts/updateUsuario.js"></script>
     <script src="/scripts/posts-perfil.js"></script>
+
+    <script>
+        let toggle_open_buttons = "closed";
+
+        function open_buttons(){
+            const buttons_overview = document.querySelector(".buttons-overview");
+
+            if(toggle_open_buttons == "closed"){
+                buttons_overview.style.height = "42vh";
+                toggle_open_buttons = "open";
+                return;
+            }
+
+            if(toggle_open_buttons == "open"){
+
+                buttons_overview.style.height = "14vh";
+                toggle_open_buttons = "closed";
+                return;
+            }
+
+        }
+
+    </script>
 </body>
 </html>

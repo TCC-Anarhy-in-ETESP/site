@@ -32,11 +32,15 @@ router.post('/get-login', async function(req, res) {
         
         const id = usuario[0].id;
 
+        const banned = await db(`select * from TblBanimentos where id_usuario = ?`, [id]);
+        let ban;
+        banned.length == 0? ban = 0 : ban = 1;
+
         const admin = await db(`call sp_verifylevel(?)`, [id]);
         const adminlevel = admin[0][0].level;
     
         if(result){
-            const token = jwt.sign({userid: id, admin: adminlevel}, SECRET);
+            const token = jwt.sign({userid: id, admin: adminlevel, banned: ban}, SECRET);
             res.cookie("token", token, {httpOnly: true}).json({
                 resultado : "logado",
                 token : token

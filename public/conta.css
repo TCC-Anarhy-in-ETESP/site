@@ -34,6 +34,13 @@ img#userImage{
     height: 35vh;
 }
 
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2vh;
+}
 
 p#userName{
     margin-top: 1.75vh;
@@ -46,6 +53,7 @@ button{
     border: 0px;
     border-radius: 0px;
     background-color: transparent;
+    outline: none;
 }
 button#editPerfil, .image-place button, form input[type='file']{
     background-color: #1b0046;
@@ -105,6 +113,7 @@ div.things{
     background-color: #0d1f3a;
     display: flex;
     flex-direction: column;
+    margin-bottom: 5vh;
     
 }
 
@@ -128,3 +137,64 @@ div.display-buttons button{
     z-index: 100;
 }
 
+.mobile{
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile{
+        display: block;
+    }
+    main{
+        flex-direction: column;
+    }
+
+    div#userTag{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+    }
+
+    div#userTag img{
+        width: 30vw;
+        height: min-content;
+    }
+
+    div#userTag p{
+        
+        margin-left: 5vw;
+        display: flex;
+        font-size: 5vw;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section#right button{
+        width: 50vw;
+    }
+
+    .buttons-overview{
+        display: flex;
+        height: 14vh;
+        flex-direction: column;
+        align-items: center;
+        overflow: hidden;
+        width: 100vw;
+        padding-top: 5vh;
+        gap: 5vh;
+        background-color: #0d1f3a;
+        transition: height 1s ;
+    }
+
+    .buttons{
+        width: 100vw;
+        height: 30vh;
+        padding-bottom: 5vh;
+        background-color: #0d1f3a;
+    }
+
+    section#left .things{
+        width: min-content;
+    }
+
+}

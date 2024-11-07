@@ -34,7 +34,7 @@ submit.addEventListener('click', async () => {
         const rest = await login(data);
         const {resultado} = await rest.json();
 
-        if(resultado == "logado") return window.location.replace("http://localhost:3000/inicio");
+        if(resultado == "logado") return window.location.replace("http://localhost:3000/");
     }catch{return;}
     
 

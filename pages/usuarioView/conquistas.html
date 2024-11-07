@@ -55,10 +55,28 @@
                     flex: 1;
                     text-align: center;
                 }
+
+                div.conquista:last-child{
+                    padding-bottom: 5vh;
+                }
                 div.progress-barra{
                     height: 100%;
                     width: 0%;
                     background-color: blueviolet;
+                }
+
+                @media (max-width: 768px){
+                    div.conquista{
+                        width: 80vw;
+                    }
+
+                    div.likes button, .comment-area button, div.post-content{
+                        font-size: 3vw;
+                    }
+
+                    .mesage{
+                        font-size: 4vw;
+                    }
                 }
             </style>
 
