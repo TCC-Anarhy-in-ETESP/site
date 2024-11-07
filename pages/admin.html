@@ -3,23 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anarchy in ETESP</title>
+    <title>inicio - THE VISITOR</title>
     <link rel="icon" href="/img/icone.png" type="image/png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/Index.css"> 
-    <link rel="stylesheet" href="/conta.css"> 
+    <link rel="stylesheet" href="/conteudo.css"> 
+    <link rel="stylesheet" href="/admin.css"> 
 </head>
 <body>
-    
-    <div id="placeAbove"></div>
     <div class="espacamento-header"></div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
                     <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
-                    <span>ETESP INVASION</span>
+                    <span>THE VISITOR</span>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -46,43 +45,25 @@
             </div>
         </nav>
     </header>
-
+    
     <main>
-        <section id="right"> 
-            <div id="userTag">
+        <section class="left">
 
-                <img src="/img/augusto.jpeg" alt="Foto de perfil do usuario" id="userImage">
-                <p id="userName">Augusto</p>
+            <div class="board-options-admin">
+                <button id="equipe-place-button">
+                    equipe
+                </button>
 
+                <button id="banimentos-place-button">
+                    banimentos
+                </button>
             </div>
-
-            
-            <div class="buttons-overview">
-                <button class="btn btn-primary mobile" onclick="open_buttons()">opções</button>  
-                <div class="buttons">
-                    <button class="btn btn-primary" id="btnNome">trocar nome</button>  
-                    <button class="btn btn-primary" id="btnSenha">trocar senha</button>  
-                    <button class="btn btn-primary" id="btnExcluir">excluir conta</button>  
-                    <button class="btn btn-primary" id="btnSair">sair conta</button> 
-                </div>
-            </div>
-            
-            
-
         </section>
 
-        <section id="left">
-            <div class="things">
-                <div class="display-buttons">
-                    <button type="button" id="btnPostsMenu">posts</button>
-                    <button type="button" id="btnRespostasMenu">respostas</button>
-                    <button type="button" id="btnConquista" onclick="ajust_div_conquista()">conquistas</button>
-                </div>
-                <div id="content">
-                    
-                </div>
+        <section class="right">
+            <h1>EQUIPE</h1>
+            <div class="box-for-admins">
             </div>
-
         </section>
     </main>
     
@@ -117,30 +98,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <script src="/scripts/userSapce.js"></script>
-    <script src="/scripts/updateUsuario.js"></script>
-    <script src="/scripts/posts-perfil.js"></script>
-
-    <script>
-        let toggle_open_buttons = "closed";
-
-        function open_buttons(){
-            const buttons_overview = document.querySelector(".buttons-overview");
-
-            if(toggle_open_buttons == "closed"){
-                buttons_overview.style.height = "42vh";
-                toggle_open_buttons = "open";
-                return;
-            }
-
-            if(toggle_open_buttons == "open"){
-
-                buttons_overview.style.height = "14vh";
-                toggle_open_buttons = "closed";
-                return;
-            }
-
-        }
-
-    </script>
+    <script src="/scripts/admin.js"></script>
+    
 </body>
 </html>

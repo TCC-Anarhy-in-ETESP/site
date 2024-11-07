@@ -3,17 +3,25 @@ const router = express.Router();
 const path = require('path');
 const jwt = require('jsonwebtoken');
 const auth = require('../api/auth');
+const auth_ban = require('../api/auth_ban');
 SECRET = 'nicolas';
 
-router.get('/inicio', function(req, res) {
+router.get('/', function(req, res) {
     res.sendFile(path.join(__dirname + '/index.html'));
 });
 router.get('/sobre', function(req,res){
     res.sendFile(path.join(__dirname+'/sobre.html'));
+});
+router.get('/criaturas', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas.html'));
 
 });
 router.get('/dev', function(req,res){
     res.sendFile(path.join(__dirname+'/dev.html'));
+
+});
+router.get('/admin', function(req,res){
+    res.sendFile(path.join(__dirname+'/admin.html'));
 
 });
 router.get('/viewConquista', function(req,res){
@@ -39,7 +47,7 @@ router.get('/viewMudarSenha', function(req,res){
     res.sendFile(path.join(__dirname+'/usuarioView/mudarSenha.html'));
 
 });
-router.get('/comunidade', function(req,res){
+router.get('/comunidade', auth, auth_ban, function(req,res){
     res.sendFile(path.join(__dirname+'/comunidade.html'));
 
 });

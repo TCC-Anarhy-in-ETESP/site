@@ -138,7 +138,7 @@ async function getEmailVerify(){
    
     document.querySelector("#emailShow").textContent = email.value
     formEmailSubmit.addEventListener('click', ()=>{
-        if(codigo == incodigo.value){
+        if(codigo != incodigo.value){
             const incodigoLabel = document.querySelector('[for="code"]');
             incodigoLabel.style.color = "red";
             incodigoLabel.textContent = "Digite o codigo de verificação - corretamente";

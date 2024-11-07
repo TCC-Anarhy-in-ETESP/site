@@ -32,8 +32,15 @@ router.post('/get-login', async function(req, res) {
         
         const id = usuario[0].id;
 
+        const banned = await db(`select * from TblBanimentos where id_usuario = ?`, [id]);
+        let ban;
+        banned.length == 0? ban = 0 : ban = 1;
+
+        const admin = await db(`call sp_verifylevel(?)`, [id]);
+        const adminlevel = admin[0][0].level;
+    
         if(result){
-            const token = jwt.sign({userid: id}, SECRET);
+            const token = jwt.sign({userid: id, admin: adminlevel, banned: ban}, SECRET);
             res.cookie("token", token, {httpOnly: true}).json({
                 resultado : "logado",
                 token : token
@@ -89,8 +96,19 @@ router.get("/get-usuario", auth,  async function (req, res){
 
     try{
         const id = req.userid;
+        const admin = req.admin;
         const usuario = await db(`select id_usuario, nome, foto_de_perfil from TblUsuario where id_usuario = ?`, [id]);
-        res.send(usuario)
+        
+        const usuario2 = [
+            {
+              id_usuario: usuario[0].id_usuario,
+              nome: usuario[0].nome,
+              foto_de_perfil: usuario[0].foto_de_perfil,
+              admin: admin
+            }
+          ];
+          console.log(usuario2)
+        res.send(usuario2)
     }catch(err){
         res.status(404).send("usuario nao encontrado", err);
     }
@@ -208,13 +226,13 @@ router.post("/sendemail", (req, res) =>{
             port: 587,
             secure: false,
             auth:{
-                user: 'MS_KOBEPk@trial-0r83ql35vyv4zw1j.mlsender.net',
-                pass: 'dBmcvuPOSv4ICPR9'
+                user: 'MS_rAab0j@trial-k68zxl2nv23lj905.mlsender.net',
+                pass: 'ZpuooHwT4lMtMY4X'
             }
         });
     
         transport.sendMail({
-            from: "Etesp <MS_KOBEPk@trial-0r83ql35vyv4zw1j.mlsender.net>",
+            from: "Etesp <MS_rAab0j@trial-k68zxl2nv23lj905.mlsender.net>",
             to: email,
             subject: 'CONFIRMAÇÃO DO EMAIL ANARCHY IN ETESP',
             html: `
@@ -336,6 +354,15 @@ router.post("/alterar-usuario", auth, async (req, res) => {
             erro : err
         });
     }
+});
+
+
+router.get("/all", async (req, res) => {
+    await db("CALL sp_signin(?, ?, ?, ?);", ["username", "email", "passwordHash", "imagem"])
+    const all = await db(`select * from TblUsuario`)
+    res.status(200).json({
+        resposta : await all
+    })
 });
 
 module.exports = router;

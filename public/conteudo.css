@@ -1,3 +1,7 @@
+body, html{
+    background-color: rgb(8,8,80);
+}
+
 .container-with-content{
     display: flex;
     flex-direction: column;
@@ -17,6 +21,7 @@
     flex-direction: column;
     width: auto;
     height: 40vh;
+    font-size: 1.2vw;
     gap: 5vh;
 }
 

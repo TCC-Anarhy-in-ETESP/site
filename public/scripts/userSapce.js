@@ -1,7 +1,3 @@
-
-
-
-
 async function verifyCookie(){
     try {
         const resposta = await fetch("http://localhost:3000/get-usuario", {
@@ -33,7 +29,7 @@ async function logBar(){
     if(resposta === -1) return 
     const nav = document.querySelector("header #userSapce")
     console.log(resposta)
-    const { nome, foto_de_perfil } = resposta[0]
+    const { nome, foto_de_perfil, admin } = resposta[0]
 
     const userLogBar = document.createElement("div");
     userLogBar.style.display = "flex";
@@ -64,6 +60,24 @@ async function logBar(){
     nav.style.cursor = "pointer";
   
     nav.replaceChildren(userLogBar);
+
+    if(admin == 1){
+        const ul = document.querySelector("#navbarNav").childNodes[1];
+
+        const uladmin =     `<li class="nav-item" >
+                                <a class="nav-link"  href="/dev" >Developers</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/forum">Forum</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/comunidade">Comunidade</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/admin">Admin</a>
+                            </li>`;
+        ul.innerHTML = uladmin;
+    }
 }
 
 logBar()

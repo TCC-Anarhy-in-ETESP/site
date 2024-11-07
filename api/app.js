@@ -10,6 +10,7 @@ const pags = require("../pages/pags");
 const usuario = require("./routes/usuario");
 const comunidade = require("./routes/comunidade");
 const gameMaker = require("./routes/game-maker");
+const administration = require("./routes/administration")
 
 const bodyParser = require('body-parser');
 
@@ -25,6 +26,8 @@ app.use( express.urlencoded({
 app.use(cookieParse())
 
 app.use("/", pags); 
+
+app.use("/administration", administration);
 
 app.use("/", comunidade); 
 

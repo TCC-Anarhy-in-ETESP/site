@@ -22,12 +22,11 @@ module.exports = (req, res, next)=>{
             console.log("token " + token1)
             jwt.verify(token1, SECRET, (err, decoded) => {
                 if (err) {
-                    return res.status(401).json({
-                        errors: 'Invalid or expired token'
-                    });
+                    return res.status(401).redirect("/login")
                 }
         
                 req.userid = decoded.userid;
+                req.admin = decoded.admin;
                 next();
             });
         

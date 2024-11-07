@@ -69,10 +69,10 @@
     font-size: 3vh;
 }
 
-.mgas{
-    width: 100vw;
+#mgas{
     display: flex;
     justify-items: center;
+    margin-bottom: 5vh;
 
 }
 
@@ -205,4 +205,31 @@ div.openComentarios{
 @keyframes openComentarios {
     from{height: 0px;}
     to{height: 10px;}
+}
+
+@media (max-width: 768px)  {
+    .post-area{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80vw;
+        height: auto;
+        background-color: #001027;
+        padding: 0px;
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+
+    .post-form{
+        width: 70vw;
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(200, 202, 204);
+        position: relative;
+        border-radius: 10px;
+        
+      
+    }
+
+
 }
