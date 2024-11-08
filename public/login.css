@@ -19,11 +19,13 @@ body, main{
 .box {
     position: relative;
     width: 55vw;
-    
+    height: 62vh;
     background: #002861;
     border-radius: 10px;
     overflow: hidden;
     margin: 1rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .box::before,
@@ -60,7 +62,9 @@ body, main{
 
 .form {
     position: relative;
-    inset: 2px;
+    width: 54.5vw;
+    left: .25vw; ;
+    top: .5vh;
     border-radius: 10px;
     z-index: 1;
     background: #000f24;
@@ -179,4 +183,22 @@ body, main{
 input[type="file"]::-webkit-file-upload-button {
     display: none;
 
+}
+
+@media (max-width: 768px){
+    .form {
+        width: 79vw;
+        position: relative;
+        top: .25vh;
+        border-radius: 10px;
+        z-index: 1;
+        background: #000f24;
+        padding: 3rem 2rem;
+    }
+    div.box{
+        width: 80vw;
+        height: 50vh;
+        
+       
+    }
 }

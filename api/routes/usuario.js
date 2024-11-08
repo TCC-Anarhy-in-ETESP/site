@@ -356,6 +356,47 @@ router.post("/alterar-usuario", auth, async (req, res) => {
     }
 });
 
+router.post("/alterar-usuario-senha", async (req, res) => {
+    const {gmail, senha} = req.body;
+    let senhaa = senha;
+
+    if(senha != "null"){
+        senhaa = await bcrypt.hash(senha, 8);
+    }
+
+
+    try{
+        await db(`call sp_atualizar(?, ?, ?, ?, ?)`, [0, "null", gmail, senhaa, "null"])
+
+        res.status(200).json({
+            resposta : "usuario alterado"
+        })
+
+    }catch(err){
+        res.status(500).json({
+            resposta : "erro",
+            erro : err
+        });
+    }
+});
+
+router.post("/verify-user-by-email", async (req, res) => {
+    try{
+        const {gmail} = req.body;
+        var existis = 0;
+        const resposta = await db("select * from tblusuario where gmail = ?", [gmail]);
+        await resposta.length > 0 ? existis = 1: existis = 0;
+        res.status(200).json({
+            resposta : existis
+        });
+    }catch(err){
+        res.status(401).json({
+            resposta : "erro",
+            erro: err
+        });
+    }
+    
+});
 
 router.get("/all", async (req, res) => {
     await db("CALL sp_signin(?, ?, ?, ?);", ["username", "email", "passwordHash", "imagem"])
