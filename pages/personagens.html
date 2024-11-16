@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>combate - THE VISITOR</title>
+    <link rel="icon" href="/img/icone.png" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/Index.css"> 
+    <link rel="stylesheet" href="/conteudo.css"> 
+    <link rel="stylesheet" href="/criaturas.css"> 
+</head>
+<body>
+    <style>
+        html, body{
+            background-color: #253957;
+        }
+        .container-with-content{
+            background-color: #253957;
+        }
+    </style>
+    <div class="espacamento-header"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
+                    <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
+                    <span>THE VISITOR</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item" >
+                            <a class="nav-link"  href="/dev" >Developers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/comunidade">Comunidade</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" >
+                        <li class="nav-item" id="userSapce">
+                            <a class="nav-link btn btn-primary text-white" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary text-white" href="/criar">criar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="index-criaturas">
+        <img src="/img/ecossistema1.png" alt="" class="background-lugares">
+        <div class="filtro"></div>
+        <div class="content left" >
+            <h1 style="left: -60vw;">PERSONAGENS</h1>
+            <p style="left: -60vw;">Converse com seus colegas, amigos e professores enquanto defende a escola do ataque alienígena. Troque informações e fortaleça laços para cumprir a missão!</p>
+        </div>
+    </div>
+
+    
+    <container class="container-with-content">
+
+        <section class="section-with-content">
+            <table>
+                <tr>
+                    <th class="foto">
+                        FOTO
+                    </th>
+                    <th class="nome">
+                        NOME
+                    </th>
+                    <th class="loc">
+                        LOCALIDADE
+                    </th>
+                    <th class="desc">
+                        DESCRIÇÃO
+                    </th>
+                </tr>
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/rodriogo_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Rodrigo
+                    </td>
+                    <td class="loc">
+                        Torres
+                    </td>
+                    <td class="desc">
+                        <p>Rodrigo é nosso professor de matemática desde o primeiro ano. Sempre exigente e atento aos detalhes, ele nos desafiou em cada aula. Mas agora, com a escola sob ataque alienígena, todas essas provas e fórmulas parecem ter perdido importância diante do caos.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/fefa_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Fefão
+                    </td>
+                    <td class="loc">
+                        Maffei
+                    </td>
+                    <td class="desc">
+                        <p>Fefão é o professor de Geografia que ama catupiry e defende a agricultura sustentável. Descontraído e cheio de ideias, ele usa seus conhecimentos para ajudar os alunos a enfrentar a invasão alienígena. Sempre pronto para uma solução criativa.                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/augusto_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Augusto
+                    </td>
+                    <td class="loc">
+                        Torres
+                    </td>
+                    <td class="desc">
+                        <p>Augusto é um aluno tranquilo e observador, mais interessado em estudar do que em se envolver em confusões. Embora não atue diretamente na luta contra os aliens, sua presença traz leveza e momentos de interação divertida no meio da tensão.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/brenno_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Brenno
+                    </td>
+                    <td class="loc">
+                        Maffei
+                    </td>
+                    <td class="desc">
+                        <p>Brenno é um aluno recém-chegado, com um cabelo esquisito e um jeito bem estranho. Ele é meio enigmático e prefere ficar na dele, observando tudo de longe. Sua presença cria um mistério entre os outros, sempre gerando comentários e risadinhas sobre seu estilo único.
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/felipe_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Felipe
+                    </td>
+                    <td class="loc">
+                        Maffei
+                    </td>
+                    <td class="desc">
+                        <p>Felipe é um cara estressado, com o cigarro sempre por perto para tentar aliviar a tensão, e está quase reprovando em Matemática. Ele adora zoar os amigos, soltando piadas ácidas sempre que possível, o que adiciona uma dose de humor no meio do caos.</p>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/guilherme_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Guilherme
+                    </td>
+                    <td class="loc">
+                        Torres
+                    </td>
+                    <td class="desc">
+                        <p>Guilherme é um skatista descolado, com um cabelo encaracolado que combina perfeitamente com seu estilo. Sempre com o skate à tira-colo, ele prefere se esquivar da confusão, mas está sempre pronto para uma boa conversa ou uma manobra.
+                        </p>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/lucas_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Lucas
+                    </td>
+                    <td class="loc">
+                        Torres
+                    </td>
+                    <td class="desc">
+                        <p>Lucas é um aluno ambicioso que sonha em ser vereador, sempre com um discurso pronto e os óculos empoleirados no nariz. Ele se envolve nas conversas sobre a invasão, tentando se posicionar como líder, e tem uma rivalidade engraçada com a Márcia. 
+                        </p>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/zero_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Jorge
+                    </td>
+                    <td class="loc">
+                        Torres
+                    </td>
+                    <td class="desc">
+                        <p>Jorge é um jovem ruivo, destemido e cheio de coragem, que nunca hesita em enfrentar qualquer desafio. Com um espírito aventureiro e uma determinação inabalável, ele está pronto para proteger sua escola a todo custo.
+                        </p>
+                    </td>
+                </tr> 
+                <tr>
+                    <td class="foto">
+                        <img src="/img/npcs/soldeir_npc.png" alt="">
+                    </td>
+                    <td class="nome">  
+                        Soldado
+                    </td>
+                    <td class="loc">
+                        Hipolito
+                    </td>
+                    <td class="desc">
+                        <p>O Soldado é um homem forte, mas agora está visivelmente machucado, com bandagens no braço e no rosto, resultado dos primeiros confrontos com os alienígenas. Apesar da dor, ele continua determinado a ajudar no combate, oferecendo apoio moral e tático.</p>
+                    </td>
+                </tr> 
+            </table>
+        </section>
+
+    </container>
+    
+
+    <footer class="footer text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-unstyled">
+                        <li><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></li>
+                        <li>Telefone: (XX) XXXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>&copy; 2024 Anarchy in ETESP - Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="/scripts/userSapce.js"></script>
+    <script>
+            
+        const divs = document.querySelectorAll(".left");
+
+        const myObserver = new IntersectionObserver( (div) =>{
+            const target = div;
+
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    status.target.childNodes[3].style.left = "0px";
+                }
+                if(status.isIntersecting == false){
+                    status.target.childNodes[1].style.left = "-80vw";
+                    status.target.childNodes[3].style.left = "-80vw";
+                }
+            });
+        });
+
+        divs.forEach(div=>{myObserver.observe(div)}) 
+
+        const divsRight = document.querySelectorAll(".right");
+
+        const myObserverRight = new IntersectionObserver( (div) =>{
+            const target = div;
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    status.target.childNodes[3].style.left = "0px";
+                }
+                if(status.isIntersecting == false){      
+                    status.target.childNodes[1].style.left = "80vw";
+                    status.target.childNodes[3].style.left = "80vw";
+                }
+            });
+        });
+
+        divsRight.forEach(div=>{myObserverRight.observe(div)});
+
+        function rightPanoramica(){
+            const img = event.target.parentElement.parentElement.childNodes[1];
+            const width_img = event.target.parentElement.parentElement.childNodes[1].offsetWidth;
+            const width_max = event.target.parentElement.parentElement.offsetWidth;
+            let left_img = parseInt(img.style.left)
+
+            const interval = setInterval((()=>{
+                if(width_img + left_img > width_max){
+                    img.style.left = `${left_img - 1}px`;
+                    left_img = parseInt(img.style.left)
+                }else{
+                    clearInterval(interval)
+                }
+            }), 5) 
+            
+            event.target.addEventListener("mouseleave", ()=>{
+                clearInterval(interval);
+            })
+            
+        }
+
+        
+        function leftPanoramica(){
+            const img = event.target.parentElement.parentElement.childNodes[1];
+            const width_img = event.target.parentElement.parentElement.childNodes[1].offsetWidth;
+            const width_max = event.target.parentElement.parentElement.offsetWidth;
+            let left_img = parseInt(img.style.left)
+
+            const interval = setInterval((()=>{
+                if(left_img < 0){
+                    img.style.left = `${left_img + 1}px`;
+                    left_img = parseInt(img.style.left)
+                }else{
+                    clearInterval(interval);
+                }
+            }), 5) 
+            
+            event.target.addEventListener("mouseleave", ()=>{
+                clearInterval(interval);
+            })
+            
+        }
+    </script>
+    
+</body>
+</html>

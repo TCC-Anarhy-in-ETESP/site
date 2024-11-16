@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>white - THE VISITOR</title>
+    <link rel="icon" href="/img/icone.png" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/Index.css"> 
+    <link rel="stylesheet" href="/conteudo.css"> 
+    <link rel="stylesheet" href="/criaturas.css"> 
+</head>
+<body>
+    <style>
+        html, body{
+            background-color: #253957;
+        }
+        .container-with-content{
+            background-color: #253957;
+        }
+    </style>
+    <div class="espacamento-header"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
+                    <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
+                    <span>THE VISITOR</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link"  href="/dev" >Developers</a>
+                        </li>
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="/comunidade">Comunidade</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" >
+                        <li class="nav-item" id="userSapce">
+                            <a class="nav-link btn btn-primary text-white" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary text-white" href="/criar">criar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    
+    <div class="index-criaturas">
+        <img src="/img/blackout.png" alt="" class="background-lugares">
+        <div class="filtro"></div>
+        <div class="content left" >
+            <h1 style="left: -60vw; margin-top: 15vh;">WHITE</h1>
+        </div>
+        <div class="criatura-gif" >
+            <img src="/img/criaturas/White_Attack[1].gif" alt="" style="left: 100vw;">
+        </div>
+    </div>
+
+    <container class="container-with-content">
+        <section class="section-with-content">
+            <div class="historia left" >
+                <h1>Origem</h1>
+                <p>
+                    White é uma criatura bizarra originária da mesma dimensão distorcida de Frog, um lugar onde as leis da física e da realidade se fragmentam em pura anomalia. Diferente de Frog, que é bidimensional, White é uma massa branca, pulsante e gelatinosa que lembra um slime. Sua aparência aparentemente inofensiva esconde sua verdadeira natureza: ao atacar, ele revela uma boca repleta de dentes enormes e afiados, além de olhos vermelhos que brilham com uma intensidade insana, refletindo um desejo insaciável de destruição.
+                </p>
+                <p>
+                    Criado a partir das energias caóticas de sua dimensão natal, White não tem uma forma fixa ou propósito, mas age por puro instinto predatório. Assim como o Purple, ele pode se dividir em várias versões menores de si mesmo, cada uma igualmente mortal, tornando-o ainda mais difícil de derrotar. White não luta por um plano ou objetivo maior; ele é uma manifestação do caos absoluto, um pesadelo fluido que devora tudo em seu caminho, espalhando terror e confusão em meio à invasão alienígena. Seu maior prazer parece ser provocar medo e pânico em suas vítimas antes de consumi-las com seus dentes monstruosos.
+                </p>
+                
+            </div>
+        </section>
+    </container>
+    
+
+    <footer class="footer text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-unstyled">
+                        <li><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></li>
+                        <li>Telefone: (XX) XXXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>&copy; 2024 Anarchy in ETESP - Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="/scripts/userSapce.js"></script>
+    <script>
+        const divs = document.querySelectorAll(".left");
+
+        const myObserver = new IntersectionObserver( (div) =>{
+            const target = div;
+
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    if(status.target.childNodes.length > 3){
+                        status.target.childNodes[3].style.left = "0px";
+                    }
+                    
+                }
+                if(status.isIntersecting == false){
+                    status.target.childNodes[1].style.left = "-80vw";
+                    if(status.target.childNodes.length > 3){
+                        status.target.childNodes[3].style.left = "-80vw";
+                    }
+                    
+                }
+            });
+        });
+
+        divs.forEach(div=>{myObserver.observe(div)}) 
+
+        const divsRight = document.querySelectorAll(".right");
+
+        const myObserverRight = new IntersectionObserver( (div) =>{
+            const target = div;
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    if(status.target.childNodes.length > 3){
+                        status.target.childNodes[3].style.left = "0px";
+                    }
+                }
+                if(status.isIntersecting == false){      
+                    status.target.childNodes[1].style.left = "80vw";
+                    if(status.target.childNodes.length > 3){
+                        status.target.childNodes[3].style.left = "80vw";
+                    }
+                }
+            });
+        });
+
+        divsRight.forEach(div=>{myObserverRight.observe(div)});
+
+        const criatura_gif = document.querySelector(".criatura-gif")
+
+        const myObserverCriatura = new IntersectionObserver(status=>{
+            if(status[0].isIntersecting == true){
+                status[0].target.childNodes[1].style.left = document.documentElement.clientWidth > 768 ? "70vw" : "10vw";
+            }
+            console.log(status[0])
+            setTimeout(()=>{
+                status[0].target.childNodes[1].src = "/img/criaturas/White_Idle[1].gif"
+            }, 700)
+            
+        });
+
+        myObserverCriatura.observe(criatura_gif);
+
+
+    </script>
+    
+</body>
+</html>

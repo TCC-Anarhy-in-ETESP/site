@@ -139,7 +139,7 @@ async function putinformation(){
         if(foto_de_perfil == null || foto_de_perfil == "null"){
             foto = "http://localhost:3000/img/princiapal.jpeg"
         }
-        if(id_admin == 24 && id != 24){
+        if(id_admin == 1 && id != 1){
             var str_component = `<div class="admin-box">
                                     <img src="${foto}" alt="">
                                     <p>${nome}</p>
@@ -157,7 +157,7 @@ async function putinformation(){
         str_html += str_component;
     });
 
-    if(id_admin == 24){
+    if(id_admin == 1){
         str_html += `<div class="add-admin">
                         <input type="text" placeholder="email ou nome da pessoa a virar admin"></input>
                         <button>add admin</button>
@@ -167,7 +167,7 @@ async function putinformation(){
 
     box_for_admins.innerHTML = str_html;
 
-    if(id_admin == 24){
+    if(id_admin == 1){
      
         for(i=0; i < box_for_admins.childNodes.length; i++){
             if(box_for_admins.childNodes[i].childNodes.length > 7){

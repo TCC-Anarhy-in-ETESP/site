@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>combate - THE VISITOR</title>
+    <link rel="icon" href="/img/icone.png" type="image/png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="/Index.css"> 
+    <link rel="stylesheet" href="/conteudo.css"> 
+    <link rel="stylesheet" href="/criaturas.css"> 
+</head>
+<body>
+    <style>
+        html, body{
+            background-color: #253957;
+        }
+        .container-with-content{
+            background-color: #253957;
+        }
+    </style>
+    <div class="espacamento-header"></div>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
+                    <img src="/img/icone.png" width="40" height="40" class="mr-2" alt="Icon">
+                    <span>THE VISITOR</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item" >
+                            <a class="nav-link"  href="/dev" >Developers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/comunidade">Comunidade</a>
+                        </li>
+                    </ul>
+                    <ul class="navbar-nav" >
+                        <li class="nav-item" id="userSapce">
+                            <a class="nav-link btn btn-primary text-white" href="/login">Login</a>
+                            <a class="nav-link btn btn-primary text-white" href="/criar">criar</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="index-criaturas">
+        <img src="/img/ecossistema1.png" alt="" class="background-lugares">
+        <div class="filtro"></div>
+        <div class="content left" >
+            <h1 style="left: -60vw;">LUGARES</h1>
+            <p style="left: -60vw;">Explore a nossa escola e todos os cenários dessa jornada para derrotar todos os alienígenas invasores que estão tentando dominá-la.</p>
+        </div>
+    </div>
+
+    
+    <container class="container-with-content">
+
+        <section class="section-with-content">
+            <div class="fotos">
+                <div class="barras-status">
+                    <div class="barra pc">
+                        <img src="/img/torres_game.png" alt="">
+                    </div>
+                    <div class="content right" id="estamina">
+                        <h1 style="left: 80vw;">Torres</h1>
+                        <p style="left: 80vw;">A Torre é o ponto de partida da sua jornada. Lá, você poderá interagir com vários colegas da escola e até conhecer novos amigos. Esse cenário não é apenas parte do jogo, mas também um local importante no cotidiano de muitos estudantes e professores da nossa escola, a ETESP.</p>
+                    </div>
+                    <div class="barra mobile">
+                        <img src="/img/torres_game.png" alt="">
+                    </div>
+                </div>
+                <div class="panoramica">
+                    <img src="/img/torres_panoramica.jpg" alt="" style="left: 0px;">
+                    <div class="comands">
+                        <div class="comands-left" onmouseover="leftPanoramica()"><</div>
+                        <div class="comands-rigth" onmouseover="rightPanoramica()">></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-with-content">
+            <div class="fotos">
+                <div class="barras-status">
+                    <div class="content left" >
+                        <h1 style="left: -80vw;">Maffei</h1>
+                        <p style="left: -80vw;">O Maffei é o prédio mais precário da nossa escola, conhecido por abrigar os alunos do segundo ano. No entanto, nós, da turma do terceiro ano de 2024, passamos dois anos enfrentando o calor intenso que torna esse lugar ainda mais desafiador nos dias quentes. No jogo, o Maffei não tem grande relevância, servindo apenas como uma área de passagem para o personagem, que atravessa o local em meio aos seus delírios.</p>
+                    </div>
+                    <div class="barra">
+                        <img src="/img/maffei_game.png" alt="">
+                    </div>
+                </div>
+                <div class="panoramica">
+                    <img src="/img/maffei_panoramica.jpg" alt="" style="left: 0px;">
+                    <div class="comands">
+                        <div class="comands-left" onmouseover="leftPanoramica()"><</div>
+                        <div class="comands-rigth" onmouseover="rightPanoramica()">></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-with-content">
+            <div class="fotos">
+                <div class="barras-status">
+                    <div class="barra pc">
+                        <img src="/img/hipolito_game.png" alt="">
+                    </div>
+                    <div class="content right" id="estamina">
+                        <h1 style="left: 80vw;">hipolito</h1>
+                        <p style="left: 80vw;">O Hipólito é o prédio onde nossa turma estuda atualmente. Todos os dias, enfrentamos três lances cansativos de escada para chegar à nossa sala, no segundo andar. Comparado ao Maffei, ele é bem melhor, mas há um problema: quando o QG da Polícia Militar organiza eventos na praça, o barulho torna praticamente impossível estudar. No jogo, o Hipólito tem uma função semelhante à do Maffei, servindo como uma área de passagem para o personagem.</p>
+                    </div>
+                    <div class="barra mobile">
+                        <img src="/img/hipolito_game.png" alt="">
+                    </div>
+                </div>
+                <div class="panoramica">
+                    <img src="/img/hipolito_panoramica.jpg" alt="" style="left: 0px;">
+                    <div class="comands">
+                        <div class="comands-left" onmouseover="leftPanoramica()"><</div>
+                        <div class="comands-rigth" onmouseover="rightPanoramica()">></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </container>
+    
+
+    <footer class="footer text-white text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div><br>
+            <div class="row">
+                <div class="col-md-12">
+                    <ul class="list-unstyled">
+                        <li><a href="mailto:contato@exemplo.com">contato@exemplo.com</a></li>
+                        <li>Telefone: (XX) XXXX-XXXX</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <p>&copy; 2024 Anarchy in ETESP - Todos os direitos reservados</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Bootstrap JS, Popper.js, and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="/scripts/userSapce.js"></script>
+    <script>
+            
+        const divs = document.querySelectorAll(".left");
+
+        const myObserver = new IntersectionObserver( (div) =>{
+            const target = div;
+
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    status.target.childNodes[3].style.left = "0px";
+                }
+                if(status.isIntersecting == false){
+                    status.target.childNodes[1].style.left = "-80vw";
+                    status.target.childNodes[3].style.left = "-80vw";
+                }
+            });
+        });
+
+        divs.forEach(div=>{myObserver.observe(div)}) 
+
+        const divsRight = document.querySelectorAll(".right");
+
+        const myObserverRight = new IntersectionObserver( (div) =>{
+            const target = div;
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    status.target.childNodes[1].style.left = "0px";
+                    status.target.childNodes[3].style.left = "0px";
+                }
+                if(status.isIntersecting == false){      
+                    status.target.childNodes[1].style.left = "80vw";
+                    status.target.childNodes[3].style.left = "80vw";
+                }
+            });
+        });
+
+        divsRight.forEach(div=>{myObserverRight.observe(div)});
+
+        function rightPanoramica(){
+            const img = event.target.parentElement.parentElement.childNodes[1];
+            const width_img = event.target.parentElement.parentElement.childNodes[1].offsetWidth;
+            const width_max = event.target.parentElement.parentElement.offsetWidth;
+            let left_img = parseInt(img.style.left)
+
+            const interval = setInterval((()=>{
+                if(width_img + left_img > width_max){
+                    img.style.left = `${left_img - 1}px`;
+                    left_img = parseInt(img.style.left)
+                }else{
+                    clearInterval(interval)
+                }
+            }), 5) 
+            
+            event.target.addEventListener("mouseleave", ()=>{
+                clearInterval(interval);
+            })
+            
+        }
+
+        
+        function leftPanoramica(){
+            const img = event.target.parentElement.parentElement.childNodes[1];
+            const width_img = event.target.parentElement.parentElement.childNodes[1].offsetWidth;
+            const width_max = event.target.parentElement.parentElement.offsetWidth;
+            let left_img = parseInt(img.style.left)
+
+            const interval = setInterval((()=>{
+                if(left_img < 0){
+                    img.style.left = `${left_img + 1}px`;
+                    left_img = parseInt(img.style.left)
+                }else{
+                    clearInterval(interval);
+                }
+            }), 5) 
+            
+            event.target.addEventListener("mouseleave", ()=>{
+                clearInterval(interval);
+            })
+            
+        }
+    </script>
+    
+</body>
+</html>

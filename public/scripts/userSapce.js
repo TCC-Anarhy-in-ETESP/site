@@ -68,9 +68,6 @@ async function logBar(){
                                 <a class="nav-link"  href="/dev" >Developers</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="/forum">Forum</a>
-                            </li>
-                            <li class="nav-item">
                                 <a class="nav-link" href="/comunidade">Comunidade</a>
                             </li>
                             <li class="nav-item">

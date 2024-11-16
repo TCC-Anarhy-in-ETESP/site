@@ -1,0 +1,605 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+20+Charted&family=Pacifico&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Tiny5&display=swap');
+
+
+a:hover{
+    text-decoration: none;
+}
+
+a{
+    text-decoration: none;
+    border: none;
+    color: transparent;
+}
+.content, .content *{
+    position: relative;
+}
+
+h1{
+    color: white;
+    text-align: center;
+    font-family: "Tiny5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.section-with-content{
+    margin-top: 15vh;
+    flex-direction: column;
+}
+
+div.criaturas-tale{
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    width: 100%;
+    gap: 5vh;
+}
+
+div.criaturas-tale-row{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+div.criatura{
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    height: 60vh;
+    position: absolute;
+
+}
+
+a.criatura{
+    width: 20vw;
+    height: 60vh;
+    background-color: #002861;
+    position: relative;
+    overflow: hidden;
+}
+
+a.criatura div.selected{
+    width: 20vw;
+    height: 60vh;
+    position: absolute;
+    z-index: 0;
+    background-color: rgba(132, 0, 255);
+    left: -20vw;
+    transition: left 1s;
+}
+
+a.criatura:hover div.selected{
+    left: 0vw;
+}
+
+div.criatura div.photo{
+    flex: 8;
+    margin: .25vw;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+}
+
+div.criatura div.photo img.background, div.criatura div.photo div.content{
+    height: 100%;
+    width: min-content;
+    position: absolute;
+}
+
+div.criatura div.photo img.background{
+    z-index: 1;
+}
+
+div.criatura div.photo div.content{
+    z-index: 2;
+}
+
+div.criatura div.photo div.content h1{
+    width: 100%;
+    height: max-content;
+    margin-top: 2vh;
+    color: white;
+    text-align: center;
+    font-family: "Tiny5", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+div.criatura div.photo div.content img{
+    height: 80%;
+}
+
+div.criatura div.desc{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1vw;
+    flex: 2;
+}
+div.criatura div.desc p{
+    z-index: 1;
+    text-align: center;
+    margin: 0px;
+    color: white;
+    font-family: "Roboto", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+div.index-criaturas{
+    width: 100%;
+    height: 90vh;
+    overflow: hidden;
+    display: flex;
+    position: relative;
+
+    & img.background{
+        position: relative;
+        top: -15vw;
+        width: 100%;
+        height: min-content;
+    }
+
+    & div.filtro{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: 1;
+        background-color: black;
+        opacity: .7;
+    }
+
+    & div.content{
+        top: 30vh;
+        left: 5vw;
+        width: 50vw;
+        height: 50vh;
+        position: absolute;
+        z-index: 2;
+    }
+
+    & h1, .titulo{
+        margin-left: 5vw;
+        text-align: left;
+        font-size: 5vw;
+        transition: left 1s;
+    }
+
+    & div.content p{
+        margin-top: 10vh;
+        height: min-content;
+        transition: left 1s;
+    }
+
+    & div.criatura-gif{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        position: absolute;
+        z-index: 3;
+        overflow: hidden;
+        padding-bottom: 5vh;
+        padding-top: 7.5vh;
+
+        & img{
+            position: absolute;
+            height: 90%;
+            width: auto;
+            transition: left 1s;
+        }
+    }
+} 
+
+.titulo{
+    margin-left: 0vw;
+    text-align: center;
+}
+
+
+div.barras-status{
+    width: 100%;
+    height: auto;
+    display: flex;
+    position: relative;
+
+    
+
+    & div.barra{
+        flex: 3; 
+        display: flex;
+        align-items: center;
+
+        & img{
+            width: 100%;
+            height: min-content;
+        }
+    }
+
+    & div.content{
+        flex: 7;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        & p, & h1{
+            width: 50vw;
+            text-align: center;
+            transition: left 1s;
+        }
+    }
+
+    & div.mobile{
+        display: none;
+    }
+}
+
+div.right{
+    & p, & h1{
+        width: 50vw;
+        transition: left 1s;
+    }
+}
+
+div.left{
+    & p, & h1{
+        transition: left 1s;
+    }
+}
+
+div.index-criaturas img.background-lugares{
+    height:  min-content;
+    width: 100%;
+}
+
+div.panoramica{
+    flex: 3;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+
+    & img{
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: auto;
+    }
+
+    & div.comands{
+        position: absolute;
+        z-index: 2;
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+        & div{
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & div.comands-left{
+            padding-right: 10vw;
+        }
+        & div.comands-rigth{
+            padding-left: 10vw;
+        }
+    }
+
+}
+
+div.fotos{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    gap: 10vh;
+
+    & div.panoramica{
+        flex: none;
+        height:60vh;
+        width: 100%;
+
+        & img{
+            height: 100%;
+            width: auto;
+        }
+    }
+}
+
+div.historia{
+    width: 100%;
+    height: auto;
+
+    & h1{
+        width: 100%;
+    }
+
+    & p{
+        margin: 0px;
+        width: 100%;
+        height: auto;
+        font-size: 2vw;
+        text-align: center;
+        margin-bottom: 2vh;
+    }
+}
+
+table, tbody{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: #002861;
+    flex-direction: column;
+
+    & tr{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+
+        & th.foto, & td.foto{
+            flex: 2;
+        }
+        & th.nome, & td.nome{
+            flex: 2;
+        }
+        & th.desc, & td.desc{
+            flex: 5;
+        }
+        & th.loc, & td.loc{
+            flex: 2;
+        }
+
+        & th{
+            height: 10vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: "Tiny5", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+        & td{
+            height: 20vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        & td.foto img{
+            height: 90%;
+            width: auto;
+        }
+
+        & td.desc p{
+            width: 100%;
+            height: 100%; 
+            margin: 0px;
+            text-align: center;
+            justify-content: center;
+        }
+
+    }
+}
+
+
+@media (max-width: 768px){
+    .pc{
+        display: none;
+    }
+
+    div.index-criaturas{
+
+        & img.background, & img.background-lugares{
+            height: 100%;
+            width: min-content;
+            left: -120vw;
+            top: 0px;
+        }
+
+        & div.content{
+            top: 0px;
+            left: 0px;
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            & h1{
+                margin: 0px;
+                margin-top: 7vh;
+                font-size: 10vw;
+                text-align: center;
+            }
+            & p{
+                margin: 0px;
+                width: 60vw;
+                font-size: 4vw;
+            }
+        }
+
+        & div.criatura-gif{
+            height: 100%;
+            width: 100%;
+
+
+            padding-bottom: 5vh;
+            padding-top: 5vh;
+
+            & img{
+                position: absolute;
+                height: 90%;
+                width: auto;
+                transition: left 1s;
+            }
+        }
+    }
+
+    div.barras-status{
+        flex-direction: column;
+
+        & div.pc{
+            display: none;
+        }
+        
+        & div.content{
+            & h1{
+                font-size: 10vw;
+            }
+
+            & p{
+                width: 100%;
+                font-size: 4vw;
+            }
+        }
+        & div.mobile{
+            display: flex;
+        }
+    }
+
+    div.criaturas-tale{
+        display: flex;
+        flex-direction: column;
+        padding-left: 5vw;
+        padding-right: 5vw;
+        width: 100%;
+        gap: 5vh;
+    }
+
+    div.criaturas-tale-row{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 5vh;
+    }
+
+
+    div.criatura{
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    a.criatura{
+        width: 100%;
+    }
+    
+    a.criatura div.selected{
+        width: 100%;
+        left: -100%;
+    }
+    div.desc p{
+        font-size: 3.5vw;
+    }
+
+    div.historia{
+        width: 100%;
+        height: auto;
+    
+        & h1{
+            font-size: 10vw;
+            width: 100%;
+        }
+    
+        & p{
+            margin: 0px;
+            width: 100%;
+            height: auto;
+            font-size: 3.5vw;
+            text-align: center;
+            margin-bottom: 2vh;
+        }
+    }
+
+    div.fotos{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+        height: auto;
+        gap: 10vh;
+    
+        & div.panoramica{
+            flex: none;
+            height:40vh;
+            width: 100%;
+    
+            & img{
+                height: 100%;
+                width: auto;
+            }
+        }
+    }
+
+    table, tbody{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        background-color: #002861;
+        flex-direction: column;
+    
+        & tr{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+    
+            & th.foto, & td.foto{
+                flex: 2;
+            }
+            & th.nome, & td.nome{
+                flex: 2;
+            }
+            & th.desc, & td.desc{
+                flex: 5;
+            }
+            & th.loc, & td.loc{
+                flex: 2;
+            }
+    
+            & th{
+                height: 10vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: "Tiny5", sans-serif;
+                font-weight: 400;
+                font-style: normal;
+                font-size: 3vw;
+            }
+            & td{
+                height: 25vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 3vw;
+            }
+            & td.foto{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+            }
+    
+            & td.foto img{
+                width: 90%;
+                height: auto;
+            }
+    
+            & td.desc p{
+                width: 100%;
+                height: 100%; 
+                margin: 0px;
+                text-align: center;
+                justify-content: center;
+            }
+    
+        }
+    }
+}

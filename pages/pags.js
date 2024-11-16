@@ -16,6 +16,46 @@ router.get('/criaturas', function(req,res){
     res.sendFile(path.join(__dirname+'/criaturas.html'));
 
 });
+router.get('/personagens', function(req,res){
+    res.sendFile(path.join(__dirname+'/personagens.html'));
+
+});
+router.get('/lugares', function(req,res){
+    res.sendFile(path.join(__dirname+'/lugares.html'));
+
+});
+router.get('/criaturas/slime', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/slime.html'));
+
+});
+router.get('/criaturas/pulmb', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/plumb.html'));
+
+});
+router.get('/criaturas/purple', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/purple.html'));
+
+});
+router.get('/criaturas/mush', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/mush.html'));
+
+});
+router.get('/criaturas/frog', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/frog.html'));
+
+});
+router.get('/criaturas/white', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/white.html'));
+
+});
+router.get('/criaturas/boss', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/boss.html'));
+
+});
+router.get('/criaturas/eye', function(req,res){
+    res.sendFile(path.join(__dirname+'/criaturas/eye.html'));
+
+});
 router.get('/dev', function(req,res){
     res.sendFile(path.join(__dirname+'/dev.html'));
 

@@ -4,6 +4,10 @@ body, html {
     font-family: 'Roboto', sans-serif;
     background-color: #253957;
 }
+
+.mobile{
+    display: none;
+}
 .navbar {
     background-color: #001027; 
     padding: 0.5rem 1rem;
@@ -412,6 +416,10 @@ header {
     }
 }
 @media (max-width: 768px) {
+    .mobile{
+        display: flex;
+    }
+    
     .hero-image {
         padding: 8rem 0; 
         font-size: 6vw; 

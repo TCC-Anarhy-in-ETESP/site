@@ -20,3 +20,19 @@ div#popping{
     margin-bottom: 20vh;
     flex-direction: column;
 }
+
+.box{
+    width: 55vw;
+    height: 85.5vh;
+}
+
+.box::after, .box::before{
+    height: 80vh;
+}
+
+#form-singn{
+    width: 54.5vw;
+    left: .25vw;
+    top: .5vh;
+
+}

@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-const { error } = require('npmlog');
 const SECRET = 'nicolas';
 
 module.exports = (req, res, next)=>{

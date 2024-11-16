@@ -3,14 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inicio - THE VISITOR</title>
+    <title>combate - THE VISITOR</title>
     <link rel="icon" href="/img/icone.png" type="image/png">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="stylesheet" href="/Index.css"> 
     <link rel="stylesheet" href="/conteudo.css"> 
+    <link rel="stylesheet" href="/criaturas.css"> 
 </head>
 <body>
+    <style>
+        html, body{
+            background-color: #253957;
+        }
+        .container-with-content{
+            background-color: #253957;
+        }
+    </style>
     <div class="espacamento-header"></div>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark">
@@ -28,9 +37,6 @@
                             <a class="nav-link"  href="/dev" >Developers</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/forum">Forum</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="/comunidade">Comunidade</a>
                         </li>
                     </ul>
@@ -44,10 +50,185 @@
             </div>
         </nav>
     </header>
+
+    <div class="index-criaturas">
+        <img src="/img/criaturas_index_gif.gif" alt="" class="background">
+        <div class="filtro"></div>
+        <div class="content" id="index">
+            <h1 style="left: -60vw;">COMBATE</h1>
+            <p style="left: -60vw;">Defenda a escola de um ataque alienígena, usando apenas sua espada para enfrentar os inimigos e sua incrível habilidade de correr e desviar dos ataques.</p>
+        </div>
+    </div>
+
     
     <container class="container-with-content">
+
         <section class="section-with-content">
-            
+            <div class="barras-status">
+                <div class="content" id="vida">
+                    <h1 style="left: -80vw;">Vida</h1>
+                    <p style="left: -80vw;">O inimigo é poderoso, mas, com inteligência, podemos superá-lo. Preserve sua saúde para enfrentar mais adversários ao longo da jornada; caso contrário, sua barra de vida se esgotará, e você será derrotado.</p>
+                </div>
+                <div class="barra">
+                    <img src="/img/life_bar.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-with-content">
+            <div class="barras-status">
+                <div class="barra pc">
+                    <img src="/img/stamin_bar.png" alt="">
+                </div>
+                <div class="content" id="estamina">
+                    <h1 style="left: 80vw;">Estamina</h1>
+                    <p style="left: 80vw;">O protagonista possui uma grande vantagem sobre o inimigo: ele pode usar um dash para desviar dos ataques. No entanto, essa habilidade consome muita energia, e, quando a barra de estamina se esgota, ele não poderá mais usá-la.</p>
+                </div>
+                <div class="barra mobile">
+                    <img src="/img/stamin_bar.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="section-with-content">
+            <h1 class="titulo">CRIATURAS</h1>
+            <div class="criaturas-tale">
+
+                <div class="criaturas-tale-row">
+
+                    <a href="/criaturas/slime" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/slime_resting_gif.gif" alt="" >
+                                    <h1>slime</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Criatura verde e pegajosa. Usa o material do seu proprio corpo para desolver as suas vitimas.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                    <a href="/criaturas/purple" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/purple_resting.gif" alt="" >
+                                    <h1>purple</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Criatura roxa e gosmenta. Se assemelha muito ao slime, mas parece ser ainda mais furioso.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                    <a href="/criaturas/pulmb" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/Plumb_Idle[1].gif" alt="" >
+                                    <h1>plumb</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Guerreiro alienígena verde, com antenas e olhos vermelhos, armado com uma espada mortal.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                </div>
+                <div class="criaturas-tale-row">
+
+                    <a href="/criaturas/mush" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/Mush_Idle[1].gif" alt="" >
+                                    <h1>mush</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Criatura colossal, formada por um cogumelo roxo com um rosto deformado, que destrói tudo.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                    <a href="/criaturas/frog" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/Frog_Idle[1].gif" alt="" >
+                                    <h1>frog</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>2D, com a forma de um sapo negro e branco, sem alma, movida pela vontade de matar.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                    <a href="/criaturas/eye" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/Eye-Idle[1].gif" alt="" >
+                                    <h1>eye</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Eye é um olho flutuante com ramificações nervosas que usa para atacar suas vítimas.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+
+                </div>
+                <div class="criaturas-tale-row">
+                    <a href="/criaturas/white" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/criaturas/White_Idle[1].gif" alt="" >
+                                    <h1>white</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Um slime branco com olhos vermelhos e dentes gigantes, capaz de se dividir ao atacar.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+                    <a href="/criaturas/boss" class="criatura">
+                        <div class="criatura">
+                            <div class="photo">
+                                <img src="/img/espaco.gif" alt="" class="background">
+                                <div class="content">
+                                    <img src="/img/criaturas/Boss_Idle[1].gif" alt="" >
+                                    <h1>boss</h1>
+                                </div>
+                            </div>
+                            <div class="desc">
+                                <p>Eye é um olho flutuante com ramificações nervosas que usa para atacar suas vítimas.</p>
+                            </div>
+                        </div>
+                        <div class="selected"></div>
+                    </a>
+                </div>
+            </div>
         </section>
     </container>
     
@@ -84,58 +265,53 @@
 
     <script src="/scripts/userSapce.js"></script>
     <script>
-        function alternate_pimg(nome){
-            let p = "";
-            let img = "";
-
-            switch (nome) {
-                case 'Criaturas':
-                    p = "As criaturas que invadiram a escola têm tanto sua origem quanto seu objetivo desconhecidos, embora alguns antigos manuscritos mencionem esses seres por conta de encontros anteriores. Esses registros sugerem que, mesmo sem entendermos totalmente sua natureza ou propósito, essas criaturas já estiveram presentes antes e são envoltas em mistério.";
-                    img = "/img/combate_gif.gif";
-                break;
-                case 'Lugares':
-                    p = "Percorra todos os lugares do jogo em busca de pistas para entender o que está acontecendo e desvendar o mistério por trás da invasão alienígena. Enfrente cada desafio e derrote os aliens com o objetivo final de salvar todos que estão na escola, restaurando a paz e a segurança no local.";
-                    img = "/img/button_lugares.gif";
-                break;
-                case 'Personagens':
-                    p = "Ao longo dessa jornada, você encontrará alguns de seus colegas e terá a oportunidade de conversar com eles para obter pistas e informações sobre o que está acontecendo. Esses diálogos poderão revelar detalhes importantes sobre a invasão, ajudando você a entender melhor a situação e a encontrar maneiras de enfrentar os desafios que surgirem.";
-                    img = "/img/button_personagens.gif";
-                break;
-                default:
-                    return console.log("erro");
-            }
-            const buttons_show = document.querySelector('.buttons-pag-content');
-            const button_p = buttons_show.childNodes[1];
-            const button_img = buttons_show.childNodes[3]
-
-            button_p.textContent = p;
-            button_img.src = img;
-
-        }
-
-        const div_with_plannet = document.querySelector(".div-with-planet");
+            
+        const divs = document.querySelectorAll(".content");
 
         const myObserver = new IntersectionObserver( (div) =>{
-            const target = div[0].target
-            
-            switch (target.className){
-                case "div-with-planet":
-                    if(div[0].isIntersecting == true){
-                        target.childNodes[1].childNodes[1].className = "div-show"
-                    }else {
-                        target.childNodes[1].childNodes[1].className = "div-with-planet-h1"
+            const target = div;
+
+            target.forEach(status=>{
+                if(status.isIntersecting == true){
+                    switch(status.target.id){
+                        case"index":
+                            status.target.childNodes[1].style.left = "0px";
+                            status.target.childNodes[3].style.left = "0px";
+                            break;
+                        case"vida":
+                            status.target.childNodes[1].style.left = "0px";
+                            status.target.childNodes[3].style.left = "0px";
+                            break;
+                        case"estamina":
+                            status.target.childNodes[1].style.left = "0px";
+                            status.target.childNodes[3].style.left = "0px";
+                            break;
                     }
-                    break;
                     
+                }
+                if(status.isIntersecting == false){
                     
-
-            }
-            console.log(div[0].target)
-
-            
+                    switch(status.target.id){
+                        case"index":
+                        
+                            status.target.childNodes[1].style.left = "-60vw";
+                            status.target.childNodes[3].style.left = "-60vw";
+                            console.log(status.target)
+                            break;
+                        case"vida":
+                            status.target.childNodes[1].style.left = "-80vw";
+                            status.target.childNodes[3].style.left = "-80vw";
+                            break;
+                        case"estamina":
+                            status.target.childNodes[1].style.left = "80vw";
+                            status.target.childNodes[3].style.left = "80vw";
+                            break;
+                    }
+                }
+            });
         });
 
-        myObserver.observe(div_with_plannet)
+        divs.forEach(div=>{myObserver.observe(div)}) 
 
 
     </script>
